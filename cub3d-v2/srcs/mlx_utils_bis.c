@@ -6,13 +6,13 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 13:32:15 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/14 17:53:05 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 15:46:42 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
-
-void	mlx_draw_line(t_mlx *mlx)
+/*
+void	mlx_draw_line(t_data *d)
 {
 	float a;
 	float b;
@@ -43,7 +43,7 @@ void	mlx_draw_line(t_mlx *mlx)
 		x1++;
 	}
 	printf("exit draw line\n");
-}
+}*/
 /*
 void	mlx_draw_line(t_mlx *mlx)
 {
@@ -87,23 +87,23 @@ void	mlx_draw_line(t_mlx *mlx)
 	printf("exit draw line\n");
 }
 */
-void	mlx_draw_circle(int r, t_mlx *mlx)
+void	mlx_draw_circle(int r, t_data *d)
 {
 	int x1;
 	int y1;
 
 	//printf("enter draw circle\n");
 	x1 = 0;
-	while (x1 < mlx->player->x_max)
+	while (x1 < d->player->x_max)
 	{
 		y1 = 0;
-		while (y1 < mlx->player->y_max)
+		while (y1 < d->player->y_max)
 		{
-			if (((mlx->player->x - x1 ) * (mlx->player->x - x1) + (mlx->player->y - y1) * (mlx->player->y - y1)) <= r * r)
+			if (((d->player->x - x1 ) * (d->player->x - x1) + (d->player->y - y1) * (d->player->y - y1)) <= r * r)
 			{
 			//	printf("x1 = %d | y1 = %d\n", x1, y1);
 			//	printf("***enter if\n");
-				my_mlx_pixel_put(mlx, y1, x1, 0x00999999);
+				my_mlx_pixel_put(d, y1, x1, 0x00999999);
 			}
 			y1++;
 		}

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/14 23:07:13 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 15:59:06 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,77 +55,81 @@ typedef struct		s_player
 {
 	int				x_max; //pixel carte
 	int				y_max; //limite pixel carte
-	int				x; //pixel position
-	int				y; //pixel position
-	float			dir_turn; // 0 no turn, -1 left +1 right
+	double			x; //pixel position
+	double			y; //pixel position
+	int				dir_turn; // 0 no turn, -1 left +1 right
 	int				dir_walk_bf;// 0 no move, -1 recule +1 avance
 	int				dir_walk_lr;// 0 no move, -1 lef +1 right
-	float			dir_ang; //where my player is looking 0-2pi
-	float			speed_ang; //how many angle per frame
-	float			speed_walk; //how many pixels per frame
+	double			fov;
+	double			angle; //where my player is looking 0-2pi
+	double			speed_ang; //how many angle per frame
+	double			speed_walk; //how many pixels per frame
 	//radius = size joueur pour minimap
 }					t_player;
 
 typedef struct	s_ray
 {
-	float	fov;
-	int		res;
-	float	ray_ang;
-	float	x_hit;
-	float	y_hit;
-	float	dist;
-	int		fac_down;
-	int		fac_up;
-	int		fac_right;
-	int		fac_left;
-	int		hit_vert;
+	unsigned int	res;
+	double			angle;
+	double			x_hit;
+	double			y_hit;
+	double			dist;
+	int				column_id;
+	double			height;		
+	int				fac_down;
+	int				fac_up;
+	int				fac_right;
+	int				fac_left;
+	int				hit_vert;
 }				t_ray;
 
 typedef struct	s_hit
 {	
 	int		h_hit;
-	float	h_x_hit;
-	float	h_y_hit;
-	float	h_dist;
+	double	h_x_hit;
+	double	h_y_hit;
+	double	h_dist;
 	int		v_hit;
-	float	v_x_hit;
-	float	v_y_hit;
-	float	v_dist;
+	double	v_x_hit;
+	double	v_y_hit;
+	double	v_dist;
 }				t_hit;
 
 typedef struct s_coord
 {
-	float	x_intercept;
-	float	y_intercept;
-	float	x_step;
-	float	y_step;
-	float 	x_next;
-	float	y_next;
+	double	x_intercept;
+	double	y_intercept;
+	double	x_step;
+	double	y_step;
+	double	x_next;
+	double	y_next;
 }			 t_coord;
 
-typedef struct s_mlx
+typedef struct	s_img
+{
+	void		*ptr;
+	char		*addr;
+	int			bits;
+	int			length;
+	int			endian;
+}				t_img;
+
+typedef struct	s_mlx
 {
 	void 		*ptr;
 	void 		*win;
-	void		*img;
-	char		*img_addr;
-
-	//a effacer?
-	void		*mm_win;
-	void		*mm_img;
-	char		*mm_img_addr;
-	int			mm_img_bits;
-	int			mm_img_line_length;
-	int			mm_img_endian;
-	//
-	int			img_bits;
-	int			img_line_length;
-	int			img_endian;
+	t_img		*img;
+}		
+				t_mlx;
+	
+typedef struct s_data
+{
+	t_mlx		*mlx;
 	t_map 		*map;
 	t_player	*player;
 	t_ray		*ray;
 	char 		**map_tab;
 
-}				t_mlx;
+}				t_data;
 
 #endif

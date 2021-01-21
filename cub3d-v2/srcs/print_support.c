@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/20 14:46:53 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 12:38:18 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	print_player(t_player *player)
 	printf("\n****** PLAYER STRUCT *****\n");
 	printf("player->x_max = %d\n", player->x_max);
 	printf("player->y_max = %d\n", player->y_max);
-	printf("player->x = %d\n", player->x);
-	printf("player->y = %d\n", player->y);
-	printf("player->dir_turn = %f\n", player->dir_turn);
+	printf("player->x = %f\n", player->x);
+	printf("player->y = %f\n", player->y);
+	printf("player->dir_turn = %d\n", player->dir_turn);
 	printf("player->dir_walk_lr = %d\n", player->dir_walk_lr);
 	printf("player->dir_walk_bf = %d\n", player->dir_walk_bf);
-	printf("player->dir_ang = %f\n", player->dir_ang);
+	printf("player->dir_ang = %f\n", player->angle);
 	printf("player->speed_ang = %f\n", player->speed_ang);
 	printf("player->speed_walk = %f\n", player->speed_walk);
 }
@@ -78,7 +78,6 @@ void	print_maptab(char **map_tab)
 void	print_ray(t_ray *r)
 {
 	printf("****print ray*****\n");
-	printf("fov en def = %f\n", r->fov);
 	printf("resolution  = %d\n", r->res);
 	printf("x_hit = %f\n", r->x_hit);
 	printf("y_hit = %f\n", r->y_hit);	

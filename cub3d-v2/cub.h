@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/20 14:43:01 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 13:06:47 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int					define_tile_size(t_map *map);
 void				f_init_mapdata(t_map *map);
 void				f_free_mapdata(t_map *map);
 void				f_init_player(t_player *player, t_map *map);
-void				f_update_player(t_player *player, char **map_tab, t_map *map);
+void				f_reset_ray(t_ray *r);
 //others
 void	print_mapdata(t_map *map);
 void	print_maptab(char **map_tab);
@@ -89,50 +89,50 @@ void	print_ray(t_ray *r);
 void	print_ray_orientation(t_ray *r);
 
 //main minilibX
-int		mlx_main(t_mlx *mlx);
-int		close_game(t_mlx *mlx);
-int		player_move(t_mlx *mlx);
-int		mini_map_update(t_mlx *mlx);
+int		mlx_main(t_data *d);
+int		close_game(t_data *d);
+int		player_move(t_data *d);
+int		mini_map_update(t_data *d);
 
 //mlx_utils
-int		key_hook(int key, t_mlx *mlx);
+int		key_hook(int key, t_data *d);
 int		deal_key(int key, void * param);
 int		deal_button(int key, void *param);
-void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
-int		close_win(t_mlx *mlx);
-int		enter_win(int key,t_mlx *mlx);
-int		exit_win(int key, t_mlx *mlx);
+void	my_mlx_pixel_put(t_data *d, int x, int y, int color);
+int		close_win(t_data *d);
+int		enter_win(int key,t_data *d);
+int		exit_win(int key, t_data *d);
 
 //mlx utils bis
-void	mlx_draw_circle(int r, t_mlx *mlx);
-void	mlx_draw_line(t_mlx *mlx);
+void	mlx_draw_circle(int r, t_data *d);
+void	mlx_draw_line(t_data *d);
 
 //mlx player
-int		key_release(int key, t_mlx *mlx);
-int		key_press(int key, t_mlx *mlx);
+int		key_release(int key, t_data *d);
+int		key_press(int key, t_data *d);
 
 //minimap
-void	mlx_create_map(t_mlx *mlx);
+void	mlx_create_map(t_data *d);
 
 //trigo
-float deg_to_rad(float deg);
-float rad_to_deg(float rad);
-float within_rad(float rad);
-float tangent(int deg);
+double deg_to_rad(double deg);
+double rad_to_deg(double rad);
+double within_rad(double rad);
 
 //algo utils
-int		hit_a_wall(int x, int y, char **map_tab, t_map *map);
+int		hit_a_wall(double x, double y, char **map_tab, t_map *map);
 
 // ray main
-int		cast_all_rays(t_mlx *mlx);
+int		cast_all_rays(t_data *d);
 
 //ray casting
-int		cast_a_ray(t_mlx *mlx, int column_id);
+int		cast_a_ray(t_data *d);
 //ray casting hv
-void	ray_cast_vertical(t_mlx *mlx, t_coord *c, t_hit *h);
-void	ray_cast_horizontal(t_mlx *mlx, t_coord *c, t_hit *h);
+void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h);
+void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h);
 
 //ray walls
-int ray_wall(t_mlx *, int column_id, t_hit *h);
+int ray_wall(t_data *d, t_hit *h);
 
+void				f_update_player(t_data *d);
 #endif

@@ -6,32 +6,57 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/20 19:47:13 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 13:07:14 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void	f_update_player(t_player *player, char **map_tab, t_map *map)
+void	f_update_player(t_data *d)
 {
-	float i;
-	float j;
-	int move;
-	float ang;
+	double	x;
+	double	y;
+//	int		move;
+	double	ang;
 
 //	printf("***enter update player****\n");
 //	print_player(player);
 	//based on turn direction
 	//ang = player->dir_turn * player->speed_ang;
-	ang = within_rad(player->dir_ang + player->dir_turn * player->speed_ang);
-	player->dir_ang = ang;
+	ang = within_rad(d->player->angle + d->player->dir_turn * d->player->speed_ang);
+	/// gauche == + // droite == -
+
+	d->player->angle = ang;
 	// aller a droite ou a gauche
 	// pas sure des formules maths
-	i = player->y;
-	j = player->x;
+	y = d->player->y;
+	x = d->player->x;
+	
+	if (d->player->dir_walk_bf == 1) // on avance
+	{
+		x = d->player->x + cos(d->player->angle) * d->player->speed_walk;
+		y = d->player->y - sin(d->player->angle) * d->player->speed_walk;
+	}
+	else if (d->player->dir_walk_bf == -1) //on recule
+	{
+		x = d->player->x - cos(d->player->angle) * d->player->speed_walk;
+		y = d->player->y + sin(d->player->angle) * d->player->speed_walk;
+	}
+	else if (d->player->dir_walk_lr == 1) // a gauche
+	{
+		x = d->player->x + cos(within_rad(d->player->angle + (M_PI / 2))) * d->player->speed_walk;
+		y = d->player->y - sin(within_rad(d->player->angle + (M_PI / 2))) * d->player->speed_walk;
+	}	
+	else if (d->player->dir_walk_lr == -1) // a doite
+	{
+		x = d->player->x - cos(within_rad(d->player->angle + (M_PI / 2))) * d->player->speed_walk;
+		y = d->player->y + sin(within_rad(d->player->angle + (M_PI / 2))) * d->player->speed_walk;
+	}
+	
+/*
+
 	move = player->speed_walk * player->dir_walk_bf + player->speed_walk * player->dir_walk_lr;
 //	printf("move = %d\n", move);
-	ang = player->dir_ang;
 	if (player->dir_walk_lr != 0)
 	{	
 		//printf("player->dir_walk_lr = %d\n", player->dir_walk_lr);	
@@ -47,19 +72,19 @@ void	f_update_player(t_player *player, char **map_tab, t_map *map)
 		j += cos(ang) * move;
 		i += sin(ang) * move;
 	//	printf("i = %f | j %f\n", i, j);
-	}
-	if (hit_a_wall((int)i, (int)j, map_tab, map) == 0)
+	}*/
+	if (hit_a_wall(x, y, d->map_tab, d->map) == 0)
 	{
-		//printf("update hit a wall\n");
-		player->x = (int)j; // j
-		player->y = (int)i; // i
+		printf("update hit a wall\n");
+		d->player->x = x; // j
+		d->player->y = y; // i
 	}	
 	//printf("a : player->x = %d\n", player->x);
 	//printf("a : player->y = %d\n", player->y);
 	
-	player->dir_turn = 0; //reset	
-	player->dir_walk_bf = 0;
-	player->dir_walk_lr = 0;
+	d->player->dir_turn = 0; //reset	
+	d->player->dir_walk_bf = 0;
+	d->player->dir_walk_lr = 0;
 
 //	printf("***exit update player****\n");
 }

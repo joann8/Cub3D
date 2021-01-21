@@ -6,31 +6,31 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 14:41:30 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/20 13:59:47 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 11:10:24 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-float	deg_to_rad(float deg)
+double	deg_to_rad(double deg)
 {
-	float rad;
+	double rad;
 
 	rad = (deg * (M_PI / 180));
 	return (rad);
 }
 
-float	rad_to_deg(float rad)
+double	rad_to_deg(double rad)
 {
-	float deg;
+	double deg;
 
 	deg = (rad * (180 / M_PI));
 	return (deg);
 }
 
-float	within_rad(float rad)
+double	within_rad(double rad)
 {
-	float 	rad2;
+	double 	rad2;
 
 	rad2 = rad;
 	while (rad2 > (2 * M_PI)) 
