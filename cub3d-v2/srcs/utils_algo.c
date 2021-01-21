@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 17:23:06 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 12:52:50 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 18:38:50 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int		hit_a_wall(double x, double y, char **map_tab, t_map *map)
 //	printf("ok\n");
 	j_col = x / map->tile_col;
 	//print_maptab(map_tab);
-	printf(" x = %f, y = %f\n",  x, y);
-	printf(" i_lin = %d, j_col = %d\n",  i_lin, j_col);
+//	printf(" x = %f, y = %f\n",  x, y);
+//	printf(" i_lin = %d, j_col = %d\n",  i_lin, j_col);
 //	printf("map[%d][%d] = %c\n", i_lin, j_col, map_tab[i_lin][j_col]);
 	if (i_lin < map->map_lin && j_col < map->map_col
 			&& map_tab[i_lin][j_col] == '0') 

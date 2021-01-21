@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 18:28:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 16:28:01 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 18:39:02 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ray_orientation(t_data *d)
 		d->ray->fac_right = -1;
 		d->ray->fac_left = 1;
 	}
-	print_ray_orientation(d->ray); 
+//	print_ray_orientation(d->ray); 
 /*
 	if (mlx->ray->ray_ang > (M_PI / 2) && mlx->ray->ray_ang < ((3 * M_PI) / 2))
 	{
@@ -84,7 +84,7 @@ int		calculate_distance(t_data *d, t_hit *h)
 		d->ray->y_hit = h->v_y_hit;
 		d->ray->dist = h->v_dist;
 		d->ray->hit_vert = 1;
-		printf("-------final distance from vertical = %f\n", d->ray->dist);
+		//printf("-------final distance from vertical = %f\n", d->ray->dist);
 	}
 	else if ((h->h_hit == 1) && (h->v_hit != 1 || h->h_dist < h->v_dist))
 	{
@@ -92,7 +92,7 @@ int		calculate_distance(t_data *d, t_hit *h)
 		d->ray->y_hit = h->h_y_hit;
 		d->ray->dist = h->h_dist;
 		d->ray->hit_vert = -1;
-		printf("--------final distance from horizontal = %f\n", d->ray->dist);
+		//printf("--------final distance from horizontal = %f\n", d->ray->dist);
 	}
 	return (1);
 }
@@ -103,7 +103,7 @@ int		cast_a_ray(t_data *d)
 	t_coord	c_h;
 	t_hit	h;
 	
-	printf("***enter cast a ray***\n");
+//	printf("***enter cast a ray***\n");
 	h.v_hit = 0;
 	h.h_hit = 0;
 	ray_orientation(d);
@@ -141,7 +141,7 @@ int		cast_a_ray(t_data *d)
 	}*/
 //	printf("ok2\n");
 	//printf("ok3\n");
-	printf("=====> h_v_hit == %d & h_h_hit = %d\n", h.v_hit, h.h_hit);
+//	printf("=====> h_v_hit == %d & h_h_hit = %d\n", h.v_hit, h.h_hit);
 	if (h.h_hit == 1 || h.v_hit == 1)
 	{
 		if (calculate_distance(d, &h) == -1)
@@ -149,6 +149,6 @@ int		cast_a_ray(t_data *d)
 		//print_hit(&h);
 	}
 	ray_wall(d, &h);
-	printf(">> exit cast a ray\n");
+//	printf(">> exit cast a ray\n");
 	return (1);
 }

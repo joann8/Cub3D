@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 15:59:06 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 18:54:29 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct		s_map
 	int				tile_min;
 }
 					t_map;
+
 
 typedef struct		s_player
 {

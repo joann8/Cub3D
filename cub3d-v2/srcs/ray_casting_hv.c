@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 18:28:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 16:35:18 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 18:37:17 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	ray_cast_h_coord(t_data *d, t_coord *c, t_hit *h)
 	//find coordinates of the closest horizontal grid intersection
 	int	tronc;
 	(void)h;
-	printf("ang = %f\n", rad_to_deg(d->ray->angle));
-	printf("player x = %f | player y = %f\n", d->player->x, d->player->y);	
+//	printf("ang = %f\n", rad_to_deg(d->ray->angle));
+//	printf("player x = %f | player y = %f\n", d->player->x, d->player->y);	
 	//printf("mlx->player->x = %d | mlx->map->tilelin = %d\n", mlx->player->x, mlx->map->tile_lin);
 	tronc = d->player->y / d->map->tile_lin;
 	c->y_intercept = (tronc * d->map->tile_lin);
@@ -57,7 +57,7 @@ void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
 	min = 0;
 	if (d->ray->fac_up == 1)
 		min = 1;
-	print_coord(c);
+//	print_coord(c);
 	//printf("first c->y_next = %f | c->x_next = %f\n", c->y_next, c->x_next);
 	//printf("first c->y_step = %f | c->x_step = %f\n", c->y_step, c->x_step);
 	while ((c->x_next >= 0 && c->x_next < d->map->r_x)
@@ -68,7 +68,7 @@ void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
 			h->h_x_hit = c->x_next;
 			h->h_y_hit = c->y_next;
 			h->h_hit = 1;
-			printf("ray horizontal ok | h->h_hit = %d\n", h->h_hit);
+	//		printf("ray horizontal ok | h->h_hit = %d\n", h->h_hit);
 			return ;
 		}
 		else
@@ -84,7 +84,7 @@ void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
 			//my_mlx_pixel_put(mlx, c->y_next, c->x_next, 0x00999999);
 		}
 	}
-	printf("hWARNING!!!!!!!!!!!!!! horizontal exit weird\n");
+//	printf("hWARNING!!!!!!!!!!!!!! horizontal exit weird\n");
 
 }
 
@@ -94,8 +94,8 @@ void	ray_cast_v_coord(t_data *d, t_coord *c, t_hit *h)
 	int	tronc;
 	(void)h;
 	
-	printf("ang = %f\n", rad_to_deg(d->ray->angle));
-	printf("player x = %f | player y = %f\n", d->player->x, d->player->y);	
+//	printf("ang = %f\n", rad_to_deg(d->ray->angle));
+//	printf("player x = %f | player y = %f\n", d->player->x, d->player->y);	
 	//printf("mlx->player->x = %d | mlx->map->tilecol = %d\n", mlx->player->x, mlx->map->tile_col);
 	tronc = d->player->x / d->map->tile_col;
 	c->x_intercept =  (tronc * d->map->tile_col);
@@ -135,7 +135,7 @@ void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h)
 	min = 0;
 	if (d->ray->fac_left == 1)
 		min = 1;
-	print_coord(c);
+//	print_coord(c);
 	//printf("first c->y_next = %f | c->x_next = %f\n", c->y_next, c->x_next);
 	//printf("first c->y_step = %f | c->x_step = %f\n", c->y_step, c->x_step);
 	while ((c->x_next - min  >= 0 && c->x_next < d->map->r_x)
@@ -146,7 +146,7 @@ void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h)
 			h->v_x_hit = c->x_next;
 			h->v_y_hit = c->y_next;
 			h->v_hit = 1;
-			printf("ray vertical ok | h->v_hit = %d\n", h->v_hit);
+	//		printf("ray vertical ok | h->v_hit = %d\n", h->v_hit);
 			return ;
 		}
 		else
@@ -165,6 +165,6 @@ void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h)
 		}
 		
 	}
-	printf("WARNING!!!!!!!!!!!!!! vertical exit weird\n");
+//	printf("WARNING!!!!!!!!!!!!!! vertical exit weird\n");
 //	printf("with c->y_next = %f | c->x_next = %f\n", c->y_next, c->x_next);
 }

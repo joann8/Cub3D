@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 15:58:04 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 18:20:48 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	f_init_player(t_player *player, t_map *map)
 
 void	f_reset_ray(t_ray *r)
 {
-	r->res = 5;
+	r->res = 1;
 	r->x_hit = 0;
 	r->y_hit = 0;
 	r->dist = 0;

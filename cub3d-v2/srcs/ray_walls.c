@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 22:29:11 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 16:13:11 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 18:35:56 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	draw_column(t_data *d, t_hit *h)
 	unsigned int start;
 	unsigned int i;
 	unsigned int j;
+	(void)h;
 
 	if (d->ray->height > d->map->r_y)
 	{
@@ -25,7 +26,7 @@ void	draw_column(t_data *d, t_hit *h)
 	}
 	else 
 		start = (d->map->r_y / 2) - ((d->ray->height / 2));
-	printf("         start = %d\n         wall height = %f\n        column id = %d\n", start, d->ray->height, d->ray->column_id);
+	//printf("         start = %d\n         wall height = %f\n        column id = %d\n", start, d->ray->height, d->ray->column_id);
 	i = 0;
 	while (i < d->ray->res)
 	{
@@ -38,12 +39,21 @@ void	draw_column(t_data *d, t_hit *h)
 		}
 		while (j < d->ray->height + start && j < d->map->r_y)
 		{
-			if (h->v_hit == 0) //RED
-				my_mlx_pixel_put(d, d->ray->column_id + i, j,0x00ff0000);
-			if (h->h_hit == 0) //yellow
-				my_mlx_pixel_put(d, d->ray->column_id + i, j,0x00ffff00);
-			else //GREEN
-				my_mlx_pixel_put(d, (int)(d->ray->column_id + i), (int)j,0x0000ff00);
+			if (d->ray->hit_vert == 1)
+			{
+				if (d->ray->fac_left == 1 || d->ray->angle == M_PI)
+					my_mlx_pixel_put(d, d->ray->column_id + i, j,0x00ff0000); // RED
+				if (d->ray->fac_right == 1 || d->ray->angle == 0)
+					my_mlx_pixel_put(d, d->ray->column_id + i, j,0x000000ff); // REDish
+			}
+			else if (d->ray->hit_vert == -1)
+			{
+				if (d->ray->fac_up == 1 || d->ray->angle == M_PI / 2)
+					my_mlx_pixel_put(d, d->ray->column_id + i, j,0x00ffff00); // Yellow
+				if (d->ray->fac_down == 1 || d->ray->angle == (3 * M_PI) / 2)
+					my_mlx_pixel_put(d, d->ray->column_id + i, j,0x0000ff00); // yellowish
+			}
+				//my_mlx_pixel_put(d, (int)(d->ray->column_id + i), (int)j,0x0000ff00);
 			j++;
 		}
 		while (j < d->map->r_y)
@@ -60,8 +70,8 @@ void	draw_column(t_data *d, t_hit *h)
 int	ray_wall(t_data *d, t_hit *h)
 {
 	double	dist_proj_plan;
-	int 	test;
-	unsigned int test2;
+	double	corrected_dist;	
+
 
 //	printf("mlx map r_x = %d | mlx->ray->fov = %f\n", mlx->map->r_x, mlx->ray->fov);
 	//printf("tan = %f\n", tan(deg_to_rad(30)));
@@ -69,10 +79,8 @@ int	ray_wall(t_data *d, t_hit *h)
 	dist_proj_plan = (d->map->r_x / 2) / tan((d->player->fov / 2));
 //	printf("dist proj plan = %f | mlx->ray->dist = %f\n", dist_proj_plan, mlx->ray->dist);
 
-
-	d->ray->height = (((d->map->tile_col / d->ray->dist) * dist_proj_plan));
-	test = (((d->map->tile_col / d->ray->dist) * dist_proj_plan));
-	test2 = (((d->map->tile_col / d->ray->dist) * dist_proj_plan));
+	corrected_dist = d->ray->dist * cos(d->ray->angle - d->player->angle);
+	d->ray->height = (((d->map->tile_col / corrected_dist) * dist_proj_plan));
 // A REVOIR
 	
 

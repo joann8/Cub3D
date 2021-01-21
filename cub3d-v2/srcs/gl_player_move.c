@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 13:07:14 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/21 18:40:45 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	f_update_player(t_data *d)
 	}*/
 	if (hit_a_wall(x, y, d->map_tab, d->map) == 0)
 	{
-		printf("update hit a wall\n");
+	//	printf("update hit a wall\n");
 		d->player->x = x; // j
 		d->player->y = y; // i
 	}	
