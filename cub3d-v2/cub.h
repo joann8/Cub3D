@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 13:06:47 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/25 16:14:53 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,9 @@ void	mlx_draw_line(t_data *d);
 //mlx player
 int		key_release(int key, t_data *d);
 int		key_press(int key, t_data *d);
+
+// mlx textures
+int	init_texture(t_data *d);
 
 //minimap
 void	mlx_create_map(t_data *d);

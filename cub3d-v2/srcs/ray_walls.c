@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 22:29:11 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 18:35:56 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/25 16:15:40 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void	draw_column(t_data *d, t_hit *h)
 			my_mlx_pixel_put(d, d->ray->column_id + i, j,0x00696969);
 			j++;
 		}
+//		draw_cube(d, start, j);
+		j = j + d->ray->height;
+		/*
 		while (j < d->ray->height + start && j < d->map->r_y)
 		{
 			if (d->ray->hit_vert == 1)
@@ -55,7 +58,7 @@ void	draw_column(t_data *d, t_hit *h)
 			}
 				//my_mlx_pixel_put(d, (int)(d->ray->column_id + i), (int)j,0x0000ff00);
 			j++;
-		}
+		}*/
 		while (j < d->map->r_y)
 		{
 		//	printf(" line i = %d | column j = %d\n", i, j);

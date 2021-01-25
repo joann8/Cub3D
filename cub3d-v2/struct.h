@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 18:54:29 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/25 16:50:43 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ typedef struct		s_map
 	int				tile_min;
 }
 					t_map;
-
-
 typedef struct		s_player
 {
 	int				x_max; //pixel carte
@@ -123,10 +121,29 @@ typedef struct	s_mlx
 }		
 				t_mlx;
 	
+typedef struct		s_texture
+{
+	t_img			*text;
+	t_img			*text_n;
+	int 			height_n;
+	int 			length_n;
+	t_img			*text_s;
+	int 			height_s;
+	int 			length_s;
+	t_img			*text_e;
+	int 			height_e;
+	int 			length_e;
+	t_img			*text_w;
+	int 			height_w;
+	int 			length_w;
+}					t_text;
+
+
 typedef struct s_data
 {
 	t_mlx		*mlx;
 	t_map 		*map;
+	t_text		*t;
 	t_player	*player;
 	t_ray		*ray;
 	char 		**map_tab;

@@ -10,6 +10,7 @@ int main(int ac, char **av)
 	t_player	player;
 	t_data		d;
 	t_ray 		ray;
+	t_text		t;
 	
 	(void)ac;
 	err_num = 0;
@@ -37,6 +38,7 @@ int main(int ac, char **av)
 	d.map_tab = map_tab;
 	d.map = &map;
 	d.ray = &ray;
+	d.t = &t;
 	mlx_main(&d);
 	printf("out of mlx\n");
 	f_free_mapdata(&map);

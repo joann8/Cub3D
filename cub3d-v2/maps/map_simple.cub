@@ -2,10 +2,10 @@ R  200 200
 F 0,255,0    
 C 255,0, 66
 
-NO /OK1.xpm
-SO /OK2.xpm
-EA /OK3.xpm
-WE /OK4.xpm
+NO ./images/north.xpm
+SO ./images/south.xpm
+EA ./images/east.xpm
+WE ./images/west.xpm
 S /OK5.xpm
 
 
