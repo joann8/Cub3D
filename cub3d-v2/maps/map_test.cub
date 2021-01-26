@@ -1,12 +1,12 @@
 R 1000 1000 
 
 F 220,    100,0
-C 20  ,   100, 0    
+C 69  ,   69, 69    
 
-NO path_to_the_north_texture.xpm       
-SO path_to_the_south_texture.xpm
-EA path_to_the_east_texture.xpm
-WE path_to_the_west_texture.xpm
+NO images/north2.xpm       
+SO images/south2.xpm
+EA images/east2.xpm
+WE images/west2.xpm
 S path_to_the_sprite_texture.xpm
 
         1111111111111111111111111

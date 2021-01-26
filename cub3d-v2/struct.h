@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/25 16:50:43 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/26 15:27:19 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ typedef struct	s_mlx
 typedef struct		s_texture
 {
 	t_img			*text;
+	int				height;
+	int				length;
 	t_img			*text_n;
 	int 			height_n;
 	int 			length_n;

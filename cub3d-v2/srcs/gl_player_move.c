@@ -6,11 +6,23 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 18:40:45 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/26 10:39:58 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
+
+int player_move(t_data *d)
+{
+//	printf("enter player move\n");
+	f_update_player(d);
+//juste pour afficher minimap
+//	mini_map_update(d);
+	printf("cast all ray\n");
+	cast_all_rays(d);
+	mlx_put_image_to_window(d->mlx->ptr, d->mlx->win, d->mlx->img->ptr, 0, 0);
+	return(0);
+}
 
 void	f_update_player(t_data *d)
 {

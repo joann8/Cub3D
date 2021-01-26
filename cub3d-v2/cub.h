@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/25 16:14:53 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/26 13:46:27 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define CUB_H
 
 
+// hello
 //#define PI 3.14159265358979323846
 
 #include "struct.h"
@@ -124,6 +125,11 @@ double within_rad(double rad);
 
 //algo utils
 int		hit_a_wall(double x, double y, char **map_tab, t_map *map);
+int		create_trgb(int t, int r, int g, int b);
+int		get_t(int trgb);
+int		get_r(int trgb);
+int		get_g(int trgb);
+int		get_b(int trgb);
 
 // ray main
 int		cast_all_rays(t_data *d);
@@ -137,5 +143,12 @@ void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h);
 //ray walls
 int ray_wall(t_data *d, t_hit *h);
 
+// ray print wall
+void	draw_wall(t_data *d, unsigned int i, unsigned int j, unsigned int start);
+void	draw_texture(t_data *d, unsigned int i, unsigned int j, unsigned int start);
+unsigned int mlx_img_get_pixel_value(t_img *img, int x, int y);
+
 void				f_update_player(t_data *d);
+
+
 #endif

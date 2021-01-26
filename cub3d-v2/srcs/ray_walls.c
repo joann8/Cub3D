@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 22:29:11 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/25 16:15:40 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/26 15:28:28 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	draw_column(t_data *d, t_hit *h)
 	unsigned int start;
 	unsigned int i;
 	unsigned int j;
+	int			color;
 	(void)h;
 
 	if (d->ray->height > d->map->r_y)
 	{
-	//	d->ray->height = d->map->r_y;
+		d->ray->height = d->map->r_y - 1;
 		start = 0;
 	}
 	else 
@@ -34,10 +35,11 @@ void	draw_column(t_data *d, t_hit *h)
 		while (j < start && j < d->map->r_y)
 		{
 		//	printf(" line i = %d | column j = %d\n", i, j);
-			my_mlx_pixel_put(d, d->ray->column_id + i, j,0x00696969);
+			color = create_trgb(0, d->map->c_r, d->map->c_g, d->map->c_b);
+			my_mlx_pixel_put(d, d->ray->column_id + i, j, color);
 			j++;
 		}
-//		draw_cube(d, start, j);
+		draw_wall(d,i,j, start);
 		j = j + d->ray->height;
 		/*
 		while (j < d->ray->height + start && j < d->map->r_y)
@@ -62,7 +64,8 @@ void	draw_column(t_data *d, t_hit *h)
 		while (j < d->map->r_y)
 		{
 		//	printf(" line i = %d | column j = %d\n", i, j);
-			my_mlx_pixel_put(d, d->ray->column_id + i, j, 0x00000000);
+			color = create_trgb(0, d->map->f_r, d->map->f_g, d->map->f_b);
+			my_mlx_pixel_put(d, d->ray->column_id + i, j, color);
 			j++;
 		}
 		i++;

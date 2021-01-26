@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2021/01/25 16:17:06 by jacher           ###   ########.fr        #
+#    Updated: 2021/01/26 13:54:55 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ srcs/utils_trigo.c  \
 srcs/ray_main.c \
 srcs/ray_casting.c \
 srcs/ray_casting_hv.c \
-srcs/ray_walls.c
+srcs/ray_walls.c \
+srcs/ray_print_walls.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -66,7 +67,7 @@ LIBS = -L${LIBFT_DIR} -lft -L${MLX_DIR} -lmlx -framework AppKit -framework OpenG
 
 all: ${NAME}
 
-${NAME}: ${LIBFT} ${MLX} ${OBJS} 
+${NAME}: cub.h struct.h ${LIBFT} ${MLX} ${OBJS}  
 	${CC} ${FLAGS} ${INC} ${OBJS} ${LIBS} -o ${NAME}		
 
 ${LIBFT}:
