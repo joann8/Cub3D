@@ -1,5 +1,14 @@
 #include "../cub.h"
 #include<mlx.h>
+
+unsigned int	mlx_img_get_pixel_value(t_img *img, int x, int y)
+{
+	char *dst;
+
+	dst = img->addr + (y * img->length) + (x * 4);
+	return(*(unsigned*)dst);
+}
+
 int	key_hook(int key, t_data *d)
 {
 	(void)key;

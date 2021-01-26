@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2021/01/26 13:54:55 by jacher           ###   ########.fr        #
+#    Updated: 2021/01/26 17:22:00 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME = cub3D
 SRCS = main.c \
 srcs/arguments_check.c \
 srcs/error_mngt.c \
-srcs/gl_player_move.c \
 srcs/map_check_col_lin.c \
 srcs/map_check_diag.c \
 srcs/map_creation.c \
@@ -27,6 +26,7 @@ srcs/map_parsing_walls.c \
 srcs/mlx_key_press.c \
 srcs/mlx_main.c \
 srcs/mlx_mini_map.c \
+srcs/mlx_player_move.c \
 srcs/mlx_textures.c \
 srcs/mlx_utils.c \
 srcs/mlx_utils_bis.c \
@@ -38,8 +38,7 @@ srcs/utils_trigo.c  \
 srcs/ray_main.c \
 srcs/ray_casting.c \
 srcs/ray_casting_hv.c \
-srcs/ray_walls.c \
-srcs/ray_print_walls.c
+srcs/ray_walls.c 
 
 OBJS = ${SRCS:.c=.o}
 

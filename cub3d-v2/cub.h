@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/26 13:46:27 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/26 17:21:33 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,20 @@ void	my_mlx_pixel_put(t_data *d, int x, int y, int color);
 int		close_win(t_data *d);
 int		enter_win(int key,t_data *d);
 int		exit_win(int key, t_data *d);
+unsigned int	mlx_img_get_pixel_value(t_img *img, int x, int y);
+
 
 //mlx utils bis
 void	mlx_draw_circle(int r, t_data *d);
 void	mlx_draw_line(t_data *d);
 
-//mlx player
+//mlx key pressed
 int		key_release(int key, t_data *d);
 int		key_press(int key, t_data *d);
+
+// mlx update player
+void				f_update_player(t_data *d);
+
 
 // mlx textures
 int	init_texture(t_data *d);
@@ -141,14 +147,9 @@ void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h);
 void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h);
 
 //ray walls
-int ray_wall(t_data *d, t_hit *h);
-
-// ray print wall
+int		ray_wall(t_data *d);
 void	draw_wall(t_data *d, unsigned int i, unsigned int j, unsigned int start);
-void	draw_texture(t_data *d, unsigned int i, unsigned int j, unsigned int start);
-unsigned int mlx_img_get_pixel_value(t_img *img, int x, int y);
-
-void				f_update_player(t_data *d);
+void	assign_texture(t_data *d);
 
 
 #endif
