@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/13 17:58:11 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/26 16:23:02 by jacher           ###   ########.fr       */
+/*   Created: 2021/01/27 10:02:07 by jacher            #+#    #+#             */
+/*   Updated: 2021/01/27 10:03:04 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int		cast_all_rays(t_data *d)
 	int		i;
 	int		num_rays;
 	float	dist_plan;
+	t_list	lst;
 
+	(void)lst;
 	f_reset_ray(d->ray);
 	i = 0;
 	num_rays = d->map->r_x / d->ray->res;

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/26 17:21:33 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/27 09:53:20 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,16 +132,15 @@ double within_rad(double rad);
 //algo utils
 int		hit_a_wall(double x, double y, char **map_tab, t_map *map);
 int		create_trgb(int t, int r, int g, int b);
-int		get_t(int trgb);
-int		get_r(int trgb);
-int		get_g(int trgb);
-int		get_b(int trgb);
+double	calculate_distance(double x1, double x2, double y1, double y2);
 
 // ray main
 int		cast_all_rays(t_data *d);
 
 //ray casting
+int		assign_distance(t_data *d, t_hit *h);
 int		cast_a_ray(t_data *d);
+
 //ray casting hv
 void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h);
 void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h);

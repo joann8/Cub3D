@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/26 15:27:19 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/27 09:23:03 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,16 @@ typedef struct		s_player
 	double			speed_walk; //how many pixels per frame
 	//radius = size joueur pour minimap
 }					t_player;
+
+typedef struct	s_sprite
+{	
+	int				bol;
+	double			x_d;
+	double			y_d;
+	int				x_i;
+	int				y_i;
+	double			dist;
+}				t_sprite;
 
 typedef struct	s_ray
 {

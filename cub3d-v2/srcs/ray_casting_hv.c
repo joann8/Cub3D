@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 18:28:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/26 16:45:42 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/27 10:03:35 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ray_cast_h_coord(t_data *d, t_coord *c)
 void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
 {
 	double	min;
+	int		res;
 
 	ray_cast_h_coord(d, c);
 	min = 0;
@@ -45,7 +46,8 @@ void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
 	while ((c->x_next >= 0 && c->x_next < d->map->r_x)
 			&& (c->y_next - min >= 0 && c->y_next < d->map->r_y))
 	{
-		if (hit_a_wall(c->x_next, c->y_next - min, d->map_tab, d->map) == 1)
+		res = hit_a_wall(c->x_next, c->y_next - min, d->map_tab, d->map); 
+		if (res == 1)
 		{
 			h->h_x_hit = c->x_next;
 			h->h_y_hit = c->y_next;
@@ -54,6 +56,8 @@ void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
 		}
 		else
 		{
+	//		if (res == 2)
+	//			ray_cast_sprite();
 			if (c->x_next + c->x_step < 0 || c->y_next + c->y_step < 0)
 				break ;
 			c->x_next += c->x_step;

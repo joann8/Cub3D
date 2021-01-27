@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 18:20:48 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/27 09:22:49 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,4 +115,14 @@ void	f_reset_ray(t_ray *r)
 	r->fac_right = 0;
 	r->fac_left = 0;
 	r->hit_vert = 0;
+}
+
+void	f_init_sprite(t_sprite *s)
+{
+	s->bol = 0;
+	s->x_d = 0;
+	s->y_d = 0;	
+	s->x_d = 0;
+	s->y_d = 0;
+	s->dist = 0;
 }

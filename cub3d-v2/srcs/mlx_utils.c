@@ -13,15 +13,16 @@ int	key_hook(int key, t_data *d)
 {
 	(void)key;
 	(void)d;
-	printf("hello hook\n");
+//	printf("hello hook\n");
 	return (1);
 }
 	
 int deal_key(int key, void *param)
 {
-	printf("key : %d\n", key);
+//	printf("key : %d\n", key);
 	//mlx_pixel_put(mlx, mlx_win....);
 	(void)param;
+	(void)key;
 	return(0);
 }
 
