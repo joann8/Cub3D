@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/27 09:53:20 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/27 11:14:05 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void				f_init_mapdata(t_map *map);
 void				f_free_mapdata(t_map *map);
 void				f_init_player(t_player *player, t_map *map);
 void				f_reset_ray(t_ray *r);
+void				f_init_sprite(t_sprite *s);
 //others
 void	print_mapdata(t_map *map);
 void	print_maptab(char **map_tab);
@@ -87,7 +88,10 @@ void	print_player(t_player *player);
 void	print_coord(t_coord *c);
 void	print_hit(t_hit *h);
 void	print_ray(t_ray *r);
+void	print_sprite(t_sprite *s);
 void	print_ray_orientation(t_ray *r);
+void	print_list(t_list **lst);
+void	print_elem_list(t_list *lst);
 
 //main minilibX
 int		mlx_main(t_data *d);
@@ -139,16 +143,19 @@ int		cast_all_rays(t_data *d);
 
 //ray casting
 int		assign_distance(t_data *d, t_hit *h);
-int		cast_a_ray(t_data *d);
+int		cast_a_ray(t_data *d, t_list **lst);
 
 //ray casting hv
-void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h);
-void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h);
+void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h, t_list **lst);
+void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h, t_list **lst);
 
 //ray walls
 int		ray_wall(t_data *d);
 void	draw_wall(t_data *d, unsigned int i, unsigned int j, unsigned int start);
 void	assign_texture(t_data *d);
+
+// sprite
+void	ray_cast_sprite(t_data *d, t_list **lst, double h_x, double h_y);
 
 
 #endif
