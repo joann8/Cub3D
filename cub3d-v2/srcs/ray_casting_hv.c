@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 18:28:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/27 10:03:35 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/27 10:54:06 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ray_cast_h_coord(t_data *d, t_coord *c)
 	c->y_next = c->y_intercept;
 }
 
-void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
+void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h, t_list **lst)
 {
 	double	min;
 	int		res;
@@ -56,8 +56,12 @@ void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
 		}
 		else
 		{
-	//		if (res == 2)
-	//			ray_cast_sprite();
+		//	(void)lst;
+			if (res == 2)
+			{
+				ray_cast_sprite(d, lst, c->x_next, c->y_next - min);
+				//print_sprite(lst->content);
+			}
 			if (c->x_next + c->x_step < 0 || c->y_next + c->y_step < 0)
 				break ;
 			c->x_next += c->x_step;
@@ -88,9 +92,10 @@ void	ray_cast_v_coord(t_data *d, t_coord *c)
 	c->y_next = c->y_intercept;
 }
 
-void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h)
+void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h, t_list **lst)
 {
 	double	min;
+	int		res;
 
 	ray_cast_v_coord(d, c);
 	min = 0;
@@ -99,7 +104,8 @@ void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h)
 	while ((c->x_next - min >= 0 && c->x_next < d->map->r_x)
 			&& (c->y_next >= 0 && c->y_next < d->map->r_y))
 	{
-		if (hit_a_wall(c->x_next - min, c->y_next, d->map_tab, d->map) == 1)
+		res = hit_a_wall(c->x_next - min, c->y_next, d->map_tab, d->map);
+		if ( res == 1)
 		{
 			h->v_x_hit = c->x_next;
 			h->v_y_hit = c->y_next;
@@ -108,6 +114,12 @@ void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h)
 		}
 		else
 		{
+		//	(void)lst;
+			if (res == 2)
+			{
+				ray_cast_sprite(d, lst, c->x_next - min, c->y_next);
+				//print_sprite(lst->content);
+			}
 			if (c->x_next + c->x_step < 0 || c->y_next + c->y_step < 0)
 				break ;
 			c->x_next += c->x_step;

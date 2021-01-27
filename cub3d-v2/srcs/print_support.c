@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 12:38:18 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/27 11:03:47 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,3 +118,36 @@ void	print_hit(t_hit *h)
 	printf("v_dist = %f\n", h->v_dist);
 	printf("******************\n");
 }
+
+void	print_sprite(t_sprite *s)
+{
+	printf("****print sprite*****\n");
+	printf("x_d = %f\n", s->x_d);
+	printf("x_i = %d\n", s->x_i);	
+	printf("y_d = %f\n", s->y_d);
+	printf("y_i = %d\n", s->y_i);
+	printf("dist = %f\n", s->dist);
+	printf("******************\n");
+}
+
+void	print_elem_list(t_list *lst)
+{
+	if (!lst)
+		printf("elem null\n");
+	else
+		print_sprite(lst->content);
+}
+
+void	print_list(t_list **lst)
+{
+	t_list *tmp;
+
+	tmp = *lst;
+	while (tmp)
+	{
+		print_elem_list(tmp);
+		tmp = tmp->next;
+	}
+}
+
+	

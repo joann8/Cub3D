@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2021/01/26 17:22:00 by jacher           ###   ########.fr        #
+#    Updated: 2021/01/27 10:21:00 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ srcs/utils_trigo.c  \
 srcs/ray_main.c \
 srcs/ray_casting.c \
 srcs/ray_casting_hv.c \
+srcs/ray_casting_sprite.c \
 srcs/ray_walls.c 
 
 OBJS = ${SRCS:.c=.o}

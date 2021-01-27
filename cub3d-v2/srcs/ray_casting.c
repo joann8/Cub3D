@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 18:28:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/27 09:55:48 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/27 10:32:22 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		assign_distance(t_data *d, t_hit *h)
 	return (-1);
 }
 
-int		cast_a_ray(t_data *d)
+int		cast_a_ray(t_data *d, t_list **lst)
 {
 	t_coord	c_v;
 	t_coord	c_h;
@@ -88,8 +88,8 @@ int		cast_a_ray(t_data *d)
 	h.v_hit = 0;
 	h.h_hit = 0;
 	ray_orientation(d);
-	ray_cast_horizontal(d, &c_h, &h);
-	ray_cast_vertical(d, &c_v, &h);
+	ray_cast_horizontal(d, &c_h, &h, lst);
+	ray_cast_vertical(d, &c_v, &h, lst);
 	if (h.h_hit == 1 || h.v_hit == 1)
 	{
 		if (assign_distance(d, &h) == -1)

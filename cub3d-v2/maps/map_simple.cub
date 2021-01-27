@@ -1,18 +1,18 @@
-R  200 200
-F 0,255,0    
-C 255,0, 66
+R  500 500
+F 220,100,0    
+C 69,69,69
 
-NO images/north.xpm
-SO images/south.xpm
-EA images/east.xpm
-WE images/west.xpm
-S /OK5.xpm
+NO images/north2.xpm
+SO images/south2.xpm
+EA images/east2.xpm
+WE images/west2.xpm
+S sprite.xpm
 
 1111111111
 1000000001
-1000000001
-1000000001
-1000000001
+1000220001
 1000000001
 1000N00001
+1000000001
+1000000001
 1111111111
