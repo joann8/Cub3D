@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:14:08 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:30:12 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 22:09:45 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int				define_tile_size(t_map *map)
 		map->tile_min = map->tile_lin;
 	else
 		map->tile_min = map->tile_col;
-	map->tile_s_l = map->tile_lin / 2;
-	map->tile_s_c = map->tile_col / 2;
 	map->tile_col = map->tile_min; // A CHANGER
 	map->tile_lin = map->tile_min; // A CHANGER
 	return (1);

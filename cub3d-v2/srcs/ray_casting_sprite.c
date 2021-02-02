@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 09:10:14 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:17:55 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 22:10:13 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	get_sprite_data(t_data *d, int i)
 	d->sprite[i].length = ((dist_proj_plan / cor_dist) * d->map->tile_lin);
 	d->sprite[i].first_x = d->map->r_x / 2 + dist_proj_plan *
 		tan(d->sprite[i].angle) - d->sprite[i].length / 2;
-	d->sprite[i].lim_top_x = d->map->r_x / 2 - d->sprite[i].height / 2;
 }
 
 void	draw_sprite(t_data *d, int i, double col, double start_x)
