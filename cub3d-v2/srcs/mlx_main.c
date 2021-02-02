@@ -51,7 +51,7 @@ int mlx_main(t_data *d)
 	d->mlx->ptr = mlx_init();
 	if (d->mlx->ptr == NULL)
 		return(-1);
-	printf("ok main 1\n");
+//	printf("ok main 1\n");
 
 	//mlx img pour vue
 	d->mlx->img->ptr = mlx_new_image(d->mlx->ptr, d->map->r_x, d->map->r_y);
@@ -62,7 +62,7 @@ int mlx_main(t_data *d)
 	
 	d->mlx->img->addr = mlx_get_data_addr(d->mlx->img->ptr, &(d->mlx->img->bits), &(d->mlx->img->length), &(d->mlx->img->endian));
 	
-	printf("ok main 2\n");
+//	printf("ok main 2\n");
 	//if ac == 3
 	//make screen shot avec mlx_create map?
 	//mlx window
@@ -71,7 +71,7 @@ int mlx_main(t_data *d)
 	d->mlx->win = mlx_new_window(d->mlx->ptr, d->map->r_x, d->map->r_y, "Cub3D_view");
 	if (d->mlx->win == NULL)
 		return (-1);
-	printf("ok main 3\n");
+//	printf("ok main 3\n");
 
 	init_texture(d);
 	//printf("length n = %i | height n = %i\n", d->t->length_n, d->t->height_n);
@@ -90,15 +90,15 @@ int mlx_main(t_data *d)
 
 	//events
 //	mlx_create_map(mlx);
-	printf("ok main 5\n");
+//	printf("ok main 5\n");
 	mlx_hook(d->mlx->win,2, 1, key_press, d);
-	printf("ok main 6\n");
+//	printf("ok main 6\n");
 	mlx_key_hook(d->mlx->win, key_release, d);
-	printf("ok main 7\n");
+//	printf("ok main 7\n");
 	mlx_hook(d->mlx->win, 17, 1, close_game, d);
 //mlx_loop_hook(d->mlx->win, player_move, d);
 //	mlx_loop_hook(mlx->win, mini_map_update, mlx);
-	printf("ok main 8\n");
+//	printf("ok main 8\n");
 //	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img, 0, 0);
 	mlx_loop(d->mlx->ptr);
 	return (1);

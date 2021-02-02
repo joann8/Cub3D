@@ -3,7 +3,7 @@
 
 int key_press(int key, t_data *d)
 {
-	printf("press key : %d\n", key);
+//	printf("press key : %d\n", key);
 	if (key == 119 || key == 13) //W  119 13
 		d->player->dir_walk_bf = 1;
 	else if (key == 115 || key == 1) //s 115 0
@@ -25,7 +25,7 @@ int key_press(int key, t_data *d)
 
 int key_release(int key, t_data *d)
 {
-	printf("release key : %d\n", key);
+	//printf("release key : %d\n", key);
 	if (key == 119 || key == 13) //W
 		d->player->dir_walk_bf = 0;
 	else if (key == 115 || key == 1) //s

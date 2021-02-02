@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:31:43 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 22:13:58 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		player_move(t_data *d)
 	f_update_player(d);
 // juste pour afficher minimap
 //	mini_map_update(d);
-	printf("cast all ray\n");
+//	printf("cast all ray\n");
 	cast_all_rays(d);
 	mlx_put_image_to_window(d->mlx->ptr, d->mlx->win, d->mlx->img->ptr, 0, 0);
 	return (0);
