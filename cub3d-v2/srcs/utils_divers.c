@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:14:08 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/13 17:57:38 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 12:00:33 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,10 @@ int				define_tile_size(t_map *map)
 		map->tile_min = map->tile_lin;
 	else
 		map->tile_min = map->tile_col;
+	map->tile_s_l = map->tile_lin / 2;
+	map->tile_s_c = map->tile_col / 2;
+	printf("tile col = %d | tile_lin = %d\ntile spr col = %d | tile spr lin = %d\n", map->tile_col, map->tile_lin, map->tile_s_c, map->tile_s_l);
+	map->tile_col = map->tile_min;
+	map->tile_lin = map->tile_min;
 	return (1);
 }	

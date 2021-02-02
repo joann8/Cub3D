@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/27 11:03:47 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 10:19:37 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,38 @@ void	print_hit(t_hit *h)
 	printf("v_dist = %f\n", h->v_dist);
 	printf("******************\n");
 }
+void	print_sprite(t_data *d, unsigned int count)
+{
+	unsigned int i;
+	i = 0;
+	while (i < count)
+	{
+		printf("****print sprite %d*****\n",i );
+		printf("x_d = %f\n", d->sprite[i].x_d);
+		printf("x_i = %d\n", d->sprite[i].x_i);	
+		printf("y_d = %f\n", d->sprite[i].y_d);
+		printf("y_i = %d\n", d->sprite[i].y_i);
+		printf("dist = %f\n", d->sprite[i].dist);
+		printf("************************\n");
+		i++;
+	}
+}
 
+void	print_rays(double *rays, int num_rays)
+{
+	int i;
+
+	i = 0;
+
+	while (i < num_rays)
+	{
+		printf("rays[%d] = %f\n", i, rays[i]);
+		i++;
+	}
+}
+	
+
+/*
 void	print_sprite(t_sprite *s)
 {
 	printf("****print sprite*****\n");
@@ -149,5 +180,5 @@ void	print_list(t_list **lst)
 		tmp = tmp->next;
 	}
 }
-
+*/
 	

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/27 09:22:49 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 14:35:44 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	f_init_mapdata(t_map *map)
 	map->tile_lin = -1;
 	map->tile_col = -1;
 	map->tile_min = -1;
+	map->sprite = 0;
 }
 
 void	f_free_mapdata(t_map *map)
@@ -100,7 +101,7 @@ void	f_init_player(t_player *player, t_map *map)
 	player->fov = M_PI / 3;
 	player->angle= f_init_dir_ang(map->player_pos);
 	player->speed_walk = 3; //((map->r_x * map->r_y) / 9600); // a modifier?
-	player->speed_ang = deg_to_rad(10);//deg_to_rad((player->speed_walk / 3));  // a modifier?
+	player->speed_ang = deg_to_rad(5);//deg_to_rad((player->speed_walk / 3));  // a modifier?
 }
 
 void	f_reset_ray(t_ray *r)
@@ -119,10 +120,25 @@ void	f_reset_ray(t_ray *r)
 
 void	f_init_sprite(t_sprite *s)
 {
-	s->bol = 0;
 	s->x_d = 0;
 	s->y_d = 0;	
 	s->x_d = 0;
 	s->y_d = 0;
 	s->dist = 0;
+}
+
+void	f_reset_sprite(t_data *d)
+{
+	int i;
+
+	i = 0;
+	while (i < d->map->sprite)
+	{
+		d->sprite[i].dist = 0;
+		d->sprite[i].angle = 0;
+		d->sprite[i].height = 0;
+		d->sprite[i].length = 0;
+		d->sprite[i].visible = 0;
+		i++;
+	}
 }

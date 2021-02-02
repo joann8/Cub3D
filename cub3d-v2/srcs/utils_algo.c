@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 17:23:06 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/27 09:52:57 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 13:17:40 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,13 @@ int		hit_a_wall(double x, double y, char **map_tab, t_map *map)
 
 int		create_trgb(int t, int r, int g, int b)
 {
-	return(t << 24 | r << 16 | g << 8 | b);
+	int color;
+
+	color = t << 24;
+	color |= r << 16;
+	color |= g << 8;
+	color |= b;
+	return(color);
 }
 
 double		calculate_distance(double x1, double x2, double y1, double y2)

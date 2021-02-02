@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/27 09:23:03 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/01 15:28:47 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ typedef struct		s_map
 	int				tile_col;
 	int				tile_lin;
 	int				tile_min;
+	int				sprite;
+	unsigned int	spr_col_no;
+	int				tile_s_l;
+	int				tile_s_c;
 }
 					t_map;
 typedef struct		s_player
@@ -68,12 +72,23 @@ typedef struct		s_player
 
 typedef struct	s_sprite
 {	
-	int				bol;
+	int				visible;
 	double			x_d;
 	double			y_d;
 	int				x_i;
 	int				y_i;
+	double			x_toplayer;
+	double			y_toplayer;
 	double			dist;
+	double			height;
+	double			size;
+	double			length;
+	double			angle;
+	double			lim_bot_x;
+	double			lim_bot_y;
+	double			lim_top_x;
+	double			lim_top_y;
+	double			first_x;
 }				t_sprite;
 
 typedef struct	s_ray
@@ -147,7 +162,11 @@ typedef struct		s_texture
 	int 			length_e;
 	t_img			*text_w;
 	int 			height_w;
-	int 			length_w;
+	int 			length_w;	
+	t_img			*text_spr;
+	int 			height_spr;
+	int 			length_spr;
+
 }					t_text;
 
 
@@ -158,6 +177,7 @@ typedef struct s_data
 	t_text		*t;
 	t_player	*player;
 	t_ray		*ray;
+	t_sprite 	*sprite;
 	char 		**map_tab;
 
 }				t_data;

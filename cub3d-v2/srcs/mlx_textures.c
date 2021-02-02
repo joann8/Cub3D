@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_walls_texture.c                                :+:      :+:    :+:   */
+/*   mlx_textures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 15:11:03 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/26 10:36:26 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/31 09:26:44 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		init_texture(t_data *d)
 {
-	printf("enter textures\n");
+//	printf("enter textures\n");
 	d->t->text_n->ptr = mlx_xpm_file_to_image(d->mlx->ptr, d->map->no_path, &(d->t->length_n), &(d->t->height_n));
 	printf("north path = %s\n", d->map->no_path);
 	if (d->t->text_n->ptr == NULL)
@@ -39,6 +39,14 @@ int		init_texture(t_data *d)
 	if (d->t->text_e->ptr == NULL)
 		return (-1);
 	d->t->text_e->addr = mlx_get_data_addr(d->t->text_e->ptr, &(d->t->text_e->bits), &(d->t->text_e->length), &(d->t->text_e->endian));
-	printf("texture east : length = %i | height = %i\n", d->t->length_e, d->t->height_e);
+	printf("texture east : length = %i | height = %i\n", d->t->length_e, d->t->height_e);	
+
+	d->t->text_spr->ptr = mlx_xpm_file_to_image(d->mlx->ptr, d->map->s_path, &(d->t->length_spr), &(d->t->height_spr));
+	if (d->t->text_spr->ptr == NULL)
+		return (-1);
+	d->t->text_spr->addr = mlx_get_data_addr(d->t->text_spr->ptr, &(d->t->text_spr->bits), &(d->t->text_spr->length), &(d->t->text_spr->endian));
+	printf("texture sprite : length = %i | height = %i\n", d->t->length_spr, d->t->height_spr);
+	d->map->spr_col_no = mlx_img_get_pixel_value(d->t->text_spr, 0, 0);
+	printf("color no = %d\n", d->map->spr_col_no);
 	return (1);
 }

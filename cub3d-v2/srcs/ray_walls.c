@@ -6,35 +6,59 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 22:29:11 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/26 17:05:48 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 13:42:34 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void	draw_wall(t_data *d, unsigned int i, unsigned int j, unsigned int start)
+int	calculate_x_wall(t_data *d)
+{
+	int				x_color;
+	int				tronc;
+
+	if (d->ray->hit_vert == -1)
+	{
+		tronc = (d->ray->x_hit) / d->map->tile_col;
+		if (d->ray->angle > 0 && d->ray->angle < M_PI)
+			x_color = ((d->ray->x_hit) - (d->map->tile_col) * tronc) * (d->t->length / d->map->tile_col);
+		else
+			x_color = (-(d->ray->x_hit) + (d->map->tile_col) * (tronc + 1 )) * (d->t->length / d->map->tile_col);
+	}
+	if (d->ray->hit_vert == 1)
+	{
+		tronc = (d->ray->y_hit) / d->map->tile_lin;
+		if (d->ray->angle < M_PI / 2 || d->ray->angle > (3 * M_PI) / 2)
+			x_color = ((d->ray->y_hit) - (d->map->tile_lin * tronc)) * (d->t->length / d->map->tile_lin);
+		else
+			x_color = (-(d->ray->y_hit) + (d->map->tile_lin * (tronc + 1)))* (d->t->length / d->map->tile_lin);
+	}
+	return (x_color);
+}
+
+	
+void	draw_wall(t_data *d, int i, int j, int start)
 {
 	unsigned int	color;
 	int				x_color;
 	int				y_color;
-	int				tronc;
-	unsigned int	k;
+	int				k;
 
-	tronc = (d->ray->x_hit) / d->map->tile_col;
-	x_color = ((d->ray->x_hit) - (d->map->tile_col) * tronc)
-		* (d->t->length / d->map->tile_col);
+	x_color = calculate_x_wall(d);
 	k = 0;
-	while (k < d->ray->height && j < d->map->r_y)
+	while (start + k < 0)
+		k++;
+	while (k < d->ray->height && j < (int)d->map->r_y)
 	{
-		if (start >= d->map->r_y)
+		if (start + k >= (int)d->map->r_y)
 			return ;
-		if (start >= 0)
+		if (start + k  >= 0)
 		{
 			y_color = k * (d->t->height / d->ray->height);
 			color = mlx_img_get_pixel_value(d->t->text, x_color, y_color);
 			my_mlx_pixel_put(d, d->ray->column_id + i, j, color);
 		}
-		start++;
+		//start++;
 		k++;
 		j++;
 	}
@@ -72,17 +96,17 @@ void	assign_texture_h(t_data *d)
 	}
 }
 
-void	draw_column(t_data *d, unsigned int start)
+void	draw_column(t_data *d, int start)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int				i;
+	int 			j;
 	int				color;
 
 	i = 0;
-	while (i < d->ray->res)
+	while (i < (int)d->ray->res)
 	{
 		j = 0;
-		while (j < start && j < d->map->r_y)
+		while (j < start && j < (int)d->map->r_y)
 		{
 			color = create_trgb(0, d->map->c_r, d->map->c_g, d->map->c_b);
 			my_mlx_pixel_put(d, d->ray->column_id + i, j, color);
@@ -90,7 +114,7 @@ void	draw_column(t_data *d, unsigned int start)
 		}
 		draw_wall(d, i, j, start);
 		j = j + d->ray->height;
-		while (j < d->map->r_y)
+		while (j < (int)d->map->r_y)
 		{
 			color = create_trgb(0, d->map->f_r, d->map->f_g, d->map->f_b);
 			my_mlx_pixel_put(d, d->ray->column_id + i, j, color);
@@ -104,18 +128,18 @@ int		ray_wall(t_data *d)
 {
 	double			dist_proj_plan;
 	double			corrected_dist;
-	unsigned int	start;
+	int				start;
 
 	dist_proj_plan = (d->map->r_x / 2) / tan((d->player->fov / 2));
 	corrected_dist = d->ray->dist * cos(d->ray->angle - d->player->angle);
 	d->ray->height = (((d->map->tile_col / corrected_dist) * dist_proj_plan));
-	if (d->ray->height > d->map->r_y)
-	{
-		d->ray->height = d->map->r_y - 1;
-		start = 0;
-	}
-	else
-		start = (d->map->r_y / 2) - ((d->ray->height / 2));
+	//if (d->ray->height > d->map->r_y)
+//	{
+//		d->ray->height = d->map->r_y - 1;
+//		start = 0;
+//	}
+//	else
+	start = (d->map->r_y / 2) - ((d->ray->height / 2));
 	if (d->ray->hit_vert == 1)
 		assign_texture_v(d);
 	else if (d->ray->hit_vert == -1)

@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2021/01/27 10:21:00 by jacher           ###   ########.fr        #
+#    Updated: 2021/01/31 13:54:51 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ srcs/map_parsing_main.c \
 srcs/map_parsing_nsew.c \
 srcs/map_parsing_rcf.c \
 srcs/map_parsing_walls.c \
+srcs/map_sprite.c \
 srcs/mlx_key_press.c \
 srcs/mlx_main.c \
 srcs/mlx_mini_map.c \
@@ -50,17 +51,17 @@ CC = clang
 RM = rm -f
 FLAGS =  -Wall -Werror -Wextra
 
-#MLX_DIR = ./minilibx-linux
-#MLX = ${MLX_DIR}/libmlx_Linux.a
-MLX_DIR = ./minilibx_mac
-MLX = ${MLX_DIR}/libmlx.a
+MLX_DIR = ./minilibx-linux
+MLX = ${MLX_DIR}/libmlx_Linux.a
+#MLX_DIR = ./minilibx_mac
+#MLX = ${MLX_DIR}/libmlx.a
 
 
 LIBFT_DIR = ./libft
 LIBFT = ${LIBFT_DIR}/libft.a
 
-# LIBS = -L ${LIBFT_DIR} -lft -L ${MLX_DIR} -lmlx -lXext -lX11 -lbsd -lm
-LIBS = -L${LIBFT_DIR} -lft -L${MLX_DIR} -lmlx -framework AppKit -framework OpenGL -lm 
+LIBS = -L ${LIBFT_DIR} -lft -L ${MLX_DIR} -lmlx -lXext -lX11 -lbsd -lm
+#LIBS = -L${LIBFT_DIR} -lft -L${MLX_DIR} -lmlx -framework AppKit -framework OpenGL -lm 
 
 .c.o: 
 	${CC} ${FLAGS} -c $< -o ${<:.c=.o} ${INC}

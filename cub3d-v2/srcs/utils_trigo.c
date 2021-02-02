@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 14:41:30 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 11:10:24 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 18:32:12 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ double	within_rad(double rad)
 	double 	rad2;
 
 	rad2 = rad;
-	while (rad2 > (2 * M_PI)) 
+	while (rad2 >= (2 * M_PI)) 
 		rad2 -= 2 * M_PI;
 	while (rad2 < 0)
 		rad2 += 2 * M_PI;

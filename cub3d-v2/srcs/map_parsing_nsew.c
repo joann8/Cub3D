@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:08:47 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/13 12:21:37 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/28 09:32:56 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		data_no(char *map_str, t_map *map, int *position)
 	if (map->no_path == NULL)
 		return (-1);
 	ft_strlcpy(map->no_path, &(map_str[i]), count + 1);
-	if (check_path_ext(map->no_path) == -1)// a ajouter quand xpm || check_path_open(map->no_path) == -1)
+	if (check_path_ext(map->no_path) == -1)// a ajouter quand xpm || check_path_open(map->no_path) == -1) // attention plusieurs points possibles?
 		return (-1);
 	map->no = 1;
 	*position = i + count;

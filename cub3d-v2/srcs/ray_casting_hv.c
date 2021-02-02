@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 18:28:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/27 10:54:06 by jacher           ###   ########.fr       */
+/*   Updated: 2021/01/28 09:25:31 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ray_cast_h_coord(t_data *d, t_coord *c)
 	c->y_next = c->y_intercept;
 }
 
-void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h, t_list **lst)
+void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
 {
 	double	min;
 	int		res;
@@ -56,12 +56,9 @@ void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h, t_list **lst)
 		}
 		else
 		{
-		//	(void)lst;
 			if (res == 2)
-			{
-				ray_cast_sprite(d, lst, c->x_next, c->y_next - min);
+				sprite_ray(d, c->x_next, c->y_next - min); 
 				//print_sprite(lst->content);
-			}
 			if (c->x_next + c->x_step < 0 || c->y_next + c->y_step < 0)
 				break ;
 			c->x_next += c->x_step;
@@ -92,7 +89,7 @@ void	ray_cast_v_coord(t_data *d, t_coord *c)
 	c->y_next = c->y_intercept;
 }
 
-void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h, t_list **lst)
+void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h)
 {
 	double	min;
 	int		res;
@@ -113,13 +110,11 @@ void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h, t_list **lst)
 			return ;
 		}
 		else
-		{
-		//	(void)lst;
+		{	
 			if (res == 2)
-			{
-				ray_cast_sprite(d, lst, c->x_next - min, c->y_next);
+				sprite_ray(d, c->x_next - min, c->y_next);
 				//print_sprite(lst->content);
-			}
+		//	}
 			if (c->x_next + c->x_step < 0 || c->y_next + c->y_step < 0)
 				break ;
 			c->x_next += c->x_step;

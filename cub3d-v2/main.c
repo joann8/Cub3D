@@ -11,8 +11,10 @@ int main(int ac, char **av)
 	t_data		d;
 	t_ray 		ray;
 	t_text		t;
+//	t_sprite	*s;
 	
 	(void)ac;
+//	s = NULL;
 	err_num = 0;
 	//printf("is ok\n");
 	f_init_mapdata(&map);
@@ -32,11 +34,25 @@ int main(int ac, char **av)
 		print_maptab(map_tab);
 		printf("\n SUCCESS MOTHER FUCKER!!!!!\n");
 	}
-	define_tile_size(&map);
-	f_init_player(&player, &map);
-	d.player = &player;
 	d.map_tab = map_tab;
 	d.map = &map;
+	define_tile_size(&map);
+	
+//	printf("is ok\n");
+	count_sprite(&d);
+//	printf("is ok2\n");
+//	printf("sprite = %d\n", d.map->sprite);
+	if (d.map->sprite >= 1)
+	{
+		record_sprite(&d, map.sprite);
+//		printf("is ok3\n");
+		if (!d.sprite)
+			return (-1);
+	}
+//	printf("count sprite = %d\n", map.sprite);
+//	print_sprite(&d, map.sprite);
+	f_init_player(&player, &map);
+	d.player = &player;
 	d.ray = &ray;
 	d.t = &t;
 	mlx_main(&d);

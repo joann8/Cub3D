@@ -36,11 +36,13 @@ int mlx_main(t_data *d)
 	t_img so;
 	t_img we;
 	t_img ea;
+	t_img spr;
 
 	d->t->text_n = &no;
 	d->t->text_s = &so;
 	d->t->text_e = &ea;
 	d->t->text_w = &we;
+	d->t->text_spr = &spr;
 
 	d->mlx = &m;
 	d->mlx->img =&img;
