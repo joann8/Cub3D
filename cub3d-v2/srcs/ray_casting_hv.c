@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 18:28:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/28 09:25:31 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 21:23:43 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
 	while ((c->x_next >= 0 && c->x_next < d->map->r_x)
 			&& (c->y_next - min >= 0 && c->y_next < d->map->r_y))
 	{
-		res = hit_a_wall(c->x_next, c->y_next - min, d->map_tab, d->map); 
+		res = hit_a_wall(c->x_next, c->y_next - min, d->map_tab, d->map);
 		if (res == 1)
 		{
 			h->h_x_hit = c->x_next;
@@ -57,10 +57,7 @@ void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
 		else
 		{
 			if (res == 2)
-				sprite_ray(d, c->x_next, c->y_next - min); 
-				//print_sprite(lst->content);
-			if (c->x_next + c->x_step < 0 || c->y_next + c->y_step < 0)
-				break ;
+				sprite_ray(d, c->x_next, c->y_next - min);
 			c->x_next += c->x_step;
 			c->y_next += c->y_step;
 		}
@@ -102,7 +99,7 @@ void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h)
 			&& (c->y_next >= 0 && c->y_next < d->map->r_y))
 	{
 		res = hit_a_wall(c->x_next - min, c->y_next, d->map_tab, d->map);
-		if ( res == 1)
+		if (res == 1)
 		{
 			h->v_x_hit = c->x_next;
 			h->v_y_hit = c->y_next;
@@ -110,13 +107,9 @@ void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h)
 			return ;
 		}
 		else
-		{	
+		{
 			if (res == 2)
 				sprite_ray(d, c->x_next - min, c->y_next);
-				//print_sprite(lst->content);
-		//	}
-			if (c->x_next + c->x_step < 0 || c->y_next + c->y_step < 0)
-				break ;
 			c->x_next += c->x_step;
 			c->y_next += c->y_step;
 		}

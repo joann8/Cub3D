@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 14:35:44 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 21:34:13 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,26 +65,15 @@ void	f_free_mapdata(t_map *map)
 double	f_init_dir_ang(char c)
 {
 	double	ang_rad;
-/*
-	if (c == 'S')
-		ang_rad = deg_to_rad(0);
-	else if (c ==  'E')
-		ang_rad = deg_to_rad(90); 
-	else if (c ==  'N')
-		ang_rad = deg_to_rad(180); 
-	else // c ==  'w'
-		ang_rad = deg_to_rad(270); 
-	return (ang_rad);
-*/
-// normalement pas d'erreur car detecter au parsing
+
 	if (c == 'S')
 		ang_rad = (3 * M_PI) / 2;
-	else if (c ==  'W')
-		ang_rad = M_PI; 
-	else if (c ==  'N')
-		ang_rad = M_PI / 2; 
+	else if (c == 'W')
+		ang_rad = M_PI;
+	else if (c == 'N')
+		ang_rad = M_PI / 2;
 	else // c ==  'e'
-		ang_rad = 0; 
+		ang_rad = 0;
 	return (ang_rad);
 }
 
@@ -99,7 +88,7 @@ void	f_init_player(t_player *player, t_map *map)
 	player->dir_walk_bf = 0;
 	player->dir_walk_lr = 0;
 	player->fov = M_PI / 3;
-	player->angle= f_init_dir_ang(map->player_pos);
+	player->angle = f_init_dir_ang(map->player_pos);
 	player->speed_walk = 3; //((map->r_x * map->r_y) / 9600); // a modifier?
 	player->speed_ang = deg_to_rad(5);//deg_to_rad((player->speed_walk / 3));  // a modifier?
 }
@@ -121,7 +110,7 @@ void	f_reset_ray(t_ray *r)
 void	f_init_sprite(t_sprite *s)
 {
 	s->x_d = 0;
-	s->y_d = 0;	
+	s->y_d = 0;
 	s->x_d = 0;
 	s->y_d = 0;
 	s->dist = 0;

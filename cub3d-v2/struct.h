@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/01 15:28:47 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 22:05:36 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ typedef struct		s_map
 	int				tile_min;
 	int				sprite;
 	unsigned int	spr_col_no;
-	int				tile_s_l;
-	int				tile_s_c;
 }
 					t_map;
 typedef struct		s_player
@@ -67,10 +65,10 @@ typedef struct		s_player
 	double			angle; //where my player is looking 0-2pi
 	double			speed_ang; //how many angle per frame
 	double			speed_walk; //how many pixels per frame
-	//radius = size joueur pour minimap
-}					t_player;
+}					t_player; 
+// ajouter dist to projected plan? 
 
-typedef struct	s_sprite
+typedef struct		s_sprite
 {	
 	int				visible;
 	double			x_d;
@@ -84,14 +82,10 @@ typedef struct	s_sprite
 	double			size;
 	double			length;
 	double			angle;
-	double			lim_bot_x;
-	double			lim_bot_y;
-	double			lim_top_x;
-	double			lim_top_y;
 	double			first_x;
-}				t_sprite;
+}					t_sprite;
 
-typedef struct	s_ray
+typedef struct		s_ray
 {
 	unsigned int	res;
 	double			angle;
@@ -105,46 +99,46 @@ typedef struct	s_ray
 	int				fac_right;
 	int				fac_left;
 	int				hit_vert;
-}				t_ray;
+}					t_ray;
 
-typedef struct	s_hit
+typedef struct		s_hit
 {	
-	int		h_hit;
-	double	h_x_hit;
-	double	h_y_hit;
-	double	h_dist;
-	int		v_hit;
-	double	v_x_hit;
-	double	v_y_hit;
-	double	v_dist;
-}				t_hit;
+	int				h_hit;
+	double			h_x_hit;
+	double			h_y_hit;
+	double			h_dist;
+	int				v_hit;
+	double			v_x_hit;
+	double			v_y_hit;
+	double			v_dist;
+}					t_hit;
 
-typedef struct s_coord
+typedef struct		s_coord
 {
-	double	x_intercept;
-	double	y_intercept;
-	double	x_step;
-	double	y_step;
-	double	x_next;
-	double	y_next;
-}			 t_coord;
+	double			x_intercept;
+	double			y_intercept;
+	double			x_step;
+	double			y_step;
+	double			x_next;
+	double			y_next;
+}					t_coord;
 
-typedef struct	s_img
+typedef struct		s_img
 {
-	void		*ptr;
-	char		*addr;
-	int			bits;
-	int			length;
-	int			endian;
-}				t_img;
+	void			*ptr;
+	char			*addr;
+	int				bits;
+	int				length;
+	int				endian;
+}					t_img;
 
-typedef struct	s_mlx
+typedef struct		s_mlx
 {
-	void 		*ptr;
-	void 		*win;
-	t_img		*img;
+	void 			*ptr;
+	void 			*win;
+	t_img			*img;
 }		
-				t_mlx;
+					t_mlx;
 	
 typedef struct		s_texture
 {
@@ -169,17 +163,16 @@ typedef struct		s_texture
 
 }					t_text;
 
-
 typedef struct s_data
 {
-	t_mlx		*mlx;
-	t_map 		*map;
-	t_text		*t;
-	t_player	*player;
-	t_ray		*ray;
-	t_sprite 	*sprite;
-	char 		**map_tab;
+	t_mlx			*mlx;
+	t_map 			*map;
+	t_text			*t;
+	t_player		*player;
+	t_ray			*ray;
+	t_sprite 		*sprite;
+	char 			**map_tab;
 
-}				t_data;
+}					t_data;
 
 #endif

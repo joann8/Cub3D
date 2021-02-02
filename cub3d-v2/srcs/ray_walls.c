@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 22:29:11 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 13:42:34 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/02 21:09:08 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,25 @@ int	calculate_x_wall(t_data *d)
 	{
 		tronc = (d->ray->x_hit) / d->map->tile_col;
 		if (d->ray->angle > 0 && d->ray->angle < M_PI)
-			x_color = ((d->ray->x_hit) - (d->map->tile_col) * tronc) * (d->t->length / d->map->tile_col);
+			x_color = ((d->ray->x_hit) - (d->map->tile_col) * tronc) *
+				(d->t->length / d->map->tile_col);
 		else
-			x_color = (-(d->ray->x_hit) + (d->map->tile_col) * (tronc + 1 )) * (d->t->length / d->map->tile_col);
+			x_color = (-(d->ray->x_hit) + (d->map->tile_col) * (tronc + 1))
+				* (d->t->length / d->map->tile_col);
 	}
 	if (d->ray->hit_vert == 1)
 	{
 		tronc = (d->ray->y_hit) / d->map->tile_lin;
 		if (d->ray->angle < M_PI / 2 || d->ray->angle > (3 * M_PI) / 2)
-			x_color = ((d->ray->y_hit) - (d->map->tile_lin * tronc)) * (d->t->length / d->map->tile_lin);
+			x_color = ((d->ray->y_hit) - (d->map->tile_lin * tronc)) *
+				(d->t->length / d->map->tile_lin);
 		else
-			x_color = (-(d->ray->y_hit) + (d->map->tile_lin * (tronc + 1)))* (d->t->length / d->map->tile_lin);
+			x_color = (-(d->ray->y_hit) + (d->map->tile_lin * (tronc + 1))) *
+				(d->t->length / d->map->tile_lin);
 	}
 	return (x_color);
 }
 
-	
 void	draw_wall(t_data *d, int i, int j, int start)
 {
 	unsigned int	color;
@@ -52,13 +55,12 @@ void	draw_wall(t_data *d, int i, int j, int start)
 	{
 		if (start + k >= (int)d->map->r_y)
 			return ;
-		if (start + k  >= 0)
+		if (start + k >= 0)
 		{
 			y_color = k * (d->t->height / d->ray->height);
 			color = mlx_img_get_pixel_value(d->t->text, x_color, y_color);
 			my_mlx_pixel_put(d, d->ray->column_id + i, j, color);
 		}
-		//start++;
 		k++;
 		j++;
 	}
@@ -99,7 +101,7 @@ void	assign_texture_h(t_data *d)
 void	draw_column(t_data *d, int start)
 {
 	int				i;
-	int 			j;
+	int				j;
 	int				color;
 
 	i = 0;
@@ -133,12 +135,6 @@ int		ray_wall(t_data *d)
 	dist_proj_plan = (d->map->r_x / 2) / tan((d->player->fov / 2));
 	corrected_dist = d->ray->dist * cos(d->ray->angle - d->player->angle);
 	d->ray->height = (((d->map->tile_col / corrected_dist) * dist_proj_plan));
-	//if (d->ray->height > d->map->r_y)
-//	{
-//		d->ray->height = d->map->r_y - 1;
-//		start = 0;
-//	}
-//	else
 	start = (d->map->r_y / 2) - ((d->ray->height / 2));
 	if (d->ray->hit_vert == 1)
 		assign_texture_v(d);
