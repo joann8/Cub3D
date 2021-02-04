@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2021/01/31 13:54:51 by jacher           ###   ########.fr        #
+#    Updated: 2021/02/04 10:20:15 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,17 +51,17 @@ CC = clang
 RM = rm -f
 FLAGS =  -Wall -Werror -Wextra
 
-MLX_DIR = ./minilibx-linux
-MLX = ${MLX_DIR}/libmlx_Linux.a
-#MLX_DIR = ./minilibx_mac
-#MLX = ${MLX_DIR}/libmlx.a
+#MLX_DIR = ./minilibx-linux
+#MLX = ${MLX_DIR}/libmlx_Linux.a
+MLX_DIR = ./minilibx_mac
+MLX = ${MLX_DIR}/libmlx.a
 
 
 LIBFT_DIR = ./libft
 LIBFT = ${LIBFT_DIR}/libft.a
 
-LIBS = -L ${LIBFT_DIR} -lft -L ${MLX_DIR} -lmlx -lXext -lX11 -lbsd -lm
-#LIBS = -L${LIBFT_DIR} -lft -L${MLX_DIR} -lmlx -framework AppKit -framework OpenGL -lm 
+#LIBS = -L ${LIBFT_DIR} -lft -L ${MLX_DIR} -lmlx -lXext -lX11 -lbsd -lm
+LIBS = -L${LIBFT_DIR} -lft -L${MLX_DIR} -lmlx -framework AppKit -framework OpenGL -lm 
 
 .c.o: 
 	${CC} ${FLAGS} -c $< -o ${<:.c=.o} ${INC}
