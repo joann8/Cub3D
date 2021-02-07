@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:08:47 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:39:32 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 18:12:10 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		skip_space_comma(char *map_str, int *pos, int tour)
 	}
 	if ((i == *pos) || (tour == 1 && mod != 0) || (tour == 2 && mod != 1)
 		|| ft_isdigit(map_str[i]) == 0)
-		return (-1);
+		return (print_error_parsing(13));
 	*pos = i;
 	return (1);
 }
@@ -47,14 +47,14 @@ int		data_r(char *map_str, t_map *map, int *position)
 	{
 		map->r_x = map->r_x_i;
 		map->r_y = map->r_y_i;
-		if (map->r_x_i > 1920)// valeur a verifier
-			map->r_x = 1920;
-		if (map->r_y_i > 1080)// valeur a verifier
-			map->r_y = 1080;
+		//if (map->r_x_i > 1920)// valeur a verifier
+		//	map->r_x = 1920;
+		//if (map->r_y_i > 1080)// valeur a verifier
+		//	map->r_y = 1080;
 		map->r = 1;
 	}
 	else
-		return (-1);
+		return (print_error_parsing(14));
 	*position = i;
 	return (1);
 }
@@ -78,7 +78,7 @@ int		data_f(char *map_str, t_map *map, int *position)
 			&& (map->f_b >= 0 && map->f_b <= 255))
 		map->f = 1;
 	else
-		return (-1);
+		return (print_error_parsing(14));
 	*position = i;
 	return (1);
 }

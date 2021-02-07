@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check_walls.c                                  :+:      :+:    :+:   */
+/*   map_parsing_walls.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 19:16:55 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/07 11:22:04 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 18:14:08 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ int		check_around(char c, char **map_tab)
 			if (map_tab[i][j] == c)
 			{
 				if (check_lin(map_tab, i, j) == -1
+						|| check_col(map_tab, i, j) == -1)
+					return (print_error_parsing(7)); /*
+				if (check_lin(map_tab, i, j) == -1
 						|| check_col(map_tab, i, j) == -1
 						|| check_diag1(map_tab, i, j) == -1
 						|| check_diag2(map_tab, i, j) == -1
 						|| check_diag3(map_tab, i, j) == -1
 						|| check_diag4(map_tab, i, j) == -1)
-					return (-1);
+					return (-1);*/
 			}
 			j++;
 		}

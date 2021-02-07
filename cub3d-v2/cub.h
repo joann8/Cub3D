@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 22:03:21 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 19:23:17 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int				check_path_open(char *str);
 char			*map_create_str(char *av);
 
 //errors
-void			print_error_msg(int err_num);
+int				print_error_parsing(int err_num);
+int				print_error_mlx(int err_num, t_data *d);
 
 //map_parsing
 char			**map_parsing(char *av, t_map *map);
@@ -95,33 +96,25 @@ void			print_rays(double *rays, int num_rays);
 //main minilibX
 int				mlx_main(t_data *d);
 int				close_game(t_data *d);
-int				player_move(t_data *d);
 int				mini_map_update(t_data *d);
 
 //mlx_utils
-int				key_hook(int key, t_data *d);
-int				deal_key(int key, void * param);
-int				deal_button(int key, void *param);
 void			my_mlx_pixel_put(t_data *d, int x, int y, int color);
-int				close_win(t_data *d);
-int				enter_win(int key,t_data *d);
-int				exit_win(int key, t_data *d);
 unsigned int	mlx_img_get_pixel_value(t_img *img, int x, int y);
-
-
-//mlx utils bis
-void			mlx_draw_circle(int r, t_data *d);
-void			mlx_draw_line(t_data *d);
 
 //mlx key pressed
 int				key_release(int key, t_data *d);
 int				key_press(int key, t_data *d);
+int				player_move(t_data *d);
+void			events(t_data *d);
 
 // mlx update player
 void			f_update_player(t_data *d);
 
 // mlx textures
 int				init_texture(t_data *d);
+void			free_textures_ptr(t_data *d);
+void			free_textures(t_data *d);
 
 //minimap
 void			mlx_create_map(t_data *d);

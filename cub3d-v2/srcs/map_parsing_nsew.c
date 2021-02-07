@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:08:47 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:41:56 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 18:07:53 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int		skip_space_folder(char *map_str, int *pos)
 	count = 0;
 	while (ft_isprint(map_str[i]) == 1 && map_str[i] != ' ' && map_str[i] != '\n' && map_str[i])
 	{
-		if (map_str[i] == '.')
+		if (map_str[i] == '.' && i != *pos)
 			dot++;
 		count++;
 		i++;
 	}
 	if (count == 0 || dot > 1)
-		return (-1); // chemin vide ou plusieurs extension
+		return (print_error_parsing(11)); // chemin vide ou plusieurs extension
 	return (count);
 }
 
@@ -49,10 +49,10 @@ int		data_no(char *map_str, t_map *map, int *position)
 		return (-1);
 	map->no_path = malloc(sizeof(char) * (count + 1));
 	if (map->no_path == NULL)
-		return (-1);
+		return(print_error_parsing(10));
 	ft_strlcpy(map->no_path, &(map_str[i]), count + 1);
 	if (check_path_ext(map->no_path) == -1)// a ajouter quand xpm || check_path_open(map->no_path) == -1) // attention plusieurs points possibles?
-		return (-1);
+		return (print_error_parsing(12));
 	map->no = 1;
 	*position = i + count;
 	return (1);
@@ -69,10 +69,10 @@ int		data_so(char *map_str, t_map *map, int *position)
 		return (-1);
 	map->so_path = malloc(sizeof(char) * (count + 1));
 	if (map->so_path == NULL)
-		return (-1);
+		return(print_error_parsing(10));
 	ft_strlcpy(map->so_path, map_str + i, count + 1);
 	if (check_path_ext(map->so_path) == -1)// a ajouter quand xpm || check_path_open(map->so_path) == -1)
-		return (-1);
+		return (print_error_parsing(12));
 	map->so = 1;
 	*position = i + count;
 	return (1);
@@ -89,10 +89,10 @@ int		data_ea(char *map_str, t_map *map, int *position)
 		return (-1);
 	map->ea_path = malloc(sizeof(char) * (count + 1));
 	if (map->ea_path == NULL)
-		return (-1);
+		return(print_error_parsing(10));
 	ft_strlcpy(map->ea_path, map_str + i, count + 1);
 	if (check_path_ext(map->ea_path) == -1)// a ajouter quand xpm || check_path_open(map->ea_path) == -1)
-		return (-1);
+		return (print_error_parsing(12));
 	map->ea = 1;
 	*position = i + count;
 	return (1);
@@ -109,10 +109,10 @@ int		data_we(char *map_str, t_map *map, int *position)
 		return (-1);
 	map->we_path = malloc(sizeof(char) * (count + 1));
 	if (map->we_path == NULL)
-		return (-1);
+		return (print_error_parsing(10));
 	ft_strlcpy(map->we_path, map_str + i, count + 1);
 	if (check_path_ext(map->we_path) == -1)// a ajouter quand xpm || check_path_open(map->we_path) == -1)
-		return (-1);
+		return (print_error_parsing(12));
 	map->we = 1;
 	*position = i + count;
 	return (1);
@@ -129,10 +129,10 @@ int		data_s(char *map_str, t_map *map, int *position)
 		return (-1);
 	map->s_path = malloc(sizeof(char) * (count + 1));
 	if (map->s_path == NULL)
-		return (-1);
+		return (print_error_parsing(10));
 	ft_strlcpy(map->s_path, map_str + i, count + 1);
 	if (check_path_ext(map->s_path) == -1)// a ajouter quand xpm || check_path_open(map->s_path) == -1)
-		return (-1);
+		return (print_error_parsing(12));
 	map->s = 1;
 	*position = i + count;
 	return (1);

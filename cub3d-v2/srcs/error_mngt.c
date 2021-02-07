@@ -1,42 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_errors.c                                       :+:      :+:    :+:   */
+/*   error_mngt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 11:42:58 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/07 13:54:53 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 19:21:39 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void	print_error_msg(int err_num)
+int	print_error_parsing(int err_num)
 {
-	write(2, "Error\n", 6);
+	printf("Error parsing\n");
 	//ouverture du fichier
 	if (err_num == 1)
-		write(2, "Missing 1st argument.\n", 22); 
+		printf("Missing 1st argument.\n"); 
 	else if (err_num == 2)
-		write(2, "1st argument extension is not a .cub.\n",38);
+		printf("1st argument extension is not a .cub.\n");
 	else if (err_num == 3)
-		write(2, "Error occurs while opening or reading the file.\n", 48); 
+		printf("Error occurs while opening or reading the file.\n"); 
 	else if (err_num == 4)
-		write(2, "Wrong inputs for IDs.\n", 22);
+		printf("Wrong inputs for IDs.\n");
 	else if (err_num == 5)
-		write(2, "Missing ID.\n", 12);		
+		printf("Missing elements.\n");		
 	else if (err_num == 6)
-		write(2, "Wrong inputs for the scene.\n", 28);
+		printf("Wrong inputs for the scene.\n");
 	else if (err_num == 7)
-		write(2, "Map not surronded by walls.\n", 28);
+		printf("Map not surronded by walls.\n");
 	else if (err_num == 8)
-		write(2, "Several first position for the player.\n", 39);		
+		printf("Several first position for the player.\n");		
 	else if (err_num == 9)
-		write(2, "No first position for the player.\n", 34);		
+		printf("No first position for the player.\n");		
 	else if (err_num == 10)
-		write(2, "Error occurs while allocating memory.\n", 38);
+		printf("Error occurs while allocating memory.\n");	
+	else if (err_num == 11)
+		printf("Wrong inputs for texture path.\n");	
+	else if (err_num == 12)
+		printf("Error occurs when opening texture path.\n");
+	else if (err_num == 13)
+		printf("Wrong inputs for color (floor or ceiling).\n");	
+	else if (err_num == 14)
+		printf("Negative value for color (floor or ceiling).\n");	
 	else
-		write(2, "Error not yet defined.\n", 23);
-	return ;
+		printf("Error not yet defined.\n");
+	return (-1);
 }
+
+int	print_error_mlx(int err_num, t_data *d)
+{
+	close_game(d);
+	printf("Error Software\n");
+	if (err_num == 1)
+		printf("Connection between software and display failed.\n");	
+	if (err_num == 2)
+		printf("Image creation error.\n");	
+	if (err_num == 3)
+		printf("Window creation error.\n");	
+	else
+		printf("Error not yet defined.\n");
+	return(-1);
+}
+	

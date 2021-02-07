@@ -1,16 +1,68 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_utils_bis.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/10 13:32:15 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/21 15:46:42 by jacher           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include<mlx.h>
 #include "../cub.h"
+
+int mini_map_update(t_data *d)
+{
+	int radius;
+
+	radius = 20;
+//	printf("enter mini_map_update\n");
+	mlx_create_map(d);
+//	printf("ok\n");
+	//mlx_draw_line(mlx);
+	//f_update_player(mlx->player, mlx->map_tab, mlx->map);
+	mlx_draw_circle(radius, d);
+//	cast_all_rays(mlx);
+//	printf("ok2\n");
+	mlx_put_image_to_window(d->mlx->ptr, d->mlx->win, d->mlx->img->ptr, 0, 0);
+	return(0);
+}
+
+void	mlx_create_map(t_data *d)
+{
+	unsigned int i;
+	unsigned int j;
+	int x;
+	int y;
+	int res_x;
+	int res_y;
+
+	res_x = d->map->r_x / 15;
+	res_y = d->map->r_y / 15;
+//	printf("enter create map\n");
+	i = 0;
+	x = i / d->map->tile_lin;
+	while (x < d->map->map_lin && d->map_tab[x])
+	{
+		//printf("tour [%d][%d]\n", i, j);
+		j = 0;
+		y = j / d->map->tile_col;
+		while (y < d->map->map_col && d->map_tab[x][y])
+		{
+		
+		//	printf("map_col = %d | map->tile col = %d\nmap_lin = %d | map->tile_lin = %d \n", mlx->map->map_col, mlx->map->tile_col, mlx->map->map_lin,mlx->map->tile_lin);
+		//	printf("tour [%d][%d]\n", i, j);
+		//	printf("map_tab[%d][%d] = %c\n", x, y, mlx->map_tab[x][y]);
+			if (d->map_tab[x][y] == 'x')
+				my_mlx_pixel_put(d, j ,i, 0x00FF0000);
+			else if (d->map_tab[x][y] == '1')
+				my_mlx_pixel_put(d, j, i, 0x0000FF00);
+			else if (d->map_tab[x][y] == '0')
+				my_mlx_pixel_put(d, j, i, 0x00FFFFFF);
+			else if (d->map_tab[x][y] == '2')
+				my_mlx_pixel_put(d, j, i, 0x000000FF);
+			else
+				my_mlx_pixel_put(d, i, j, 0x00FF0000);
+			j++;
+			y = (j + res_y) / d->map->tile_col;
+			
+		}
+		i++;
+		x = (i + res_x) / d->map->tile_lin;
+	}
+//	printf("exit with success\n");
+}
+
 /*
 void	mlx_draw_line(t_data *d)
 {
@@ -111,3 +163,4 @@ void	mlx_draw_circle(int r, t_data *d)
 	}
 //	printf("exit draw circle\n");
 }
+

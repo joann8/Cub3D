@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:00:49 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:44:04 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 17:58:44 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int		record_player_pos(t_map *map, char **map_tab)
 		}
 		i++;
 	}
+	print_error_parsing(9);
 	return (-1);
 }
 
@@ -110,7 +111,10 @@ char	**map_parsing(char *av, t_map *map)
 
 	map_str = map_create_str(av);
 	if (map_str == NULL)
+	{
+		print_error_parsing(10);
 		return (NULL);
+	}
 	i = 0;
 	if (map_data_others(map_str, map, &i) == -1)
 	{
@@ -119,16 +123,19 @@ char	**map_parsing(char *av, t_map *map)
 	}
 	if (map_str[i] == '\0' || check_others(map) == 0)
 	{
+		print_error_parsing(5);
 		free(map_str);
 		return (NULL);
 	}
 	map_tab = map_creation(map_str, i, map);
 	if (map_tab == NULL)
 	{
+		print_error_parsing(10);
 		free(map_str);
 		return (NULL);
 	}
-	if (record_player_pos(map, map_tab) == -1 || map_check_walls(map_tab) == -1)
+	if (record_player_pos(map, map_tab) == -1 ||
+			map_check_walls(map_tab) == -1)
 	{
 		ft_free_map(map_tab, 2147483647);//pas sure d'avoir le droit
 		return (NULL);

@@ -6,22 +6,26 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 22:13:58 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 19:28:22 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-int		player_move(t_data *d)
+int		close_game(t_data *d)
 {
-//	printf("enter player move\n");
-	f_update_player(d);
-// juste pour afficher minimap
-//	mini_map_update(d);
-//	printf("cast all ray\n");
-	cast_all_rays(d);
-	mlx_put_image_to_window(d->mlx->ptr, d->mlx->win, d->mlx->img->ptr, 0, 0);
-	return (0);
+	free_textures(d);
+	free_textures_ptr(d);
+	if (d->mlx->img->ptr)
+		mlx_destroy_image(d->mlx->ptr, d->mlx->img->ptr);
+	if (d->mlx->win)
+		mlx_destroy_window(d->mlx->ptr, d->mlx->win);
+	if (d->mlx->ptr)
+	{
+		mlx_destroy_display(d->mlx->ptr);
+		free(d->mlx->ptr);
+	}
+	return (1);
 }
 
 void	calculate_x_y(t_data *d, double *x, double *y)
@@ -63,7 +67,7 @@ void	f_update_player(t_data *d)
 	x = d->player->x;
 	calculate_x_y(d, &x, &y);
 	if (hit_a_wall(x, y, d->map_tab, d->map) == 0
-		|| hit_a_wall(x, y, d->map_tab, d->map) == 2) // on accepte les objets
+		|| hit_a_wall(x, y, d->map_tab, d->map) == 2)// on accepte les objets
 	{
 		d->player->x = x;
 		d->player->y = y;

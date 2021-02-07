@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:34:13 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 17:34:05 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void	f_init_player(t_player *player, t_map *map)
 	player->dir_walk_lr = 0;
 	player->fov = M_PI / 3;
 	player->angle = f_init_dir_ang(map->player_pos);
-	player->speed_walk = 3; //((map->r_x * map->r_y) / 9600); // a modifier?
-	player->speed_ang = deg_to_rad(5);//deg_to_rad((player->speed_walk / 3));  // a modifier?
+	player->speed_walk = 2;//(map->r_y * map->r_x) / 96000; // a modifier?
+	player->speed_ang = deg_to_rad(3);  // a modifier?
 }
 
 void	f_reset_ray(t_ray *r)

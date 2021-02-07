@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 09:10:14 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:36:57 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 18:22:01 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ void			record_sprite(t_data *d, unsigned int count)
 	k = 0;
 	d->sprite = malloc(sizeof(t_sprite) * count);
 	if (!d->sprite)
+	{
+	//	return(print_error_parsing(10);
 		return ; // AJOUTER ERREUR
+	}
 	i = 0;
 	while (d->map_tab[i])
 	{
