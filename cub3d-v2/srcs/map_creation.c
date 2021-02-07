@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 14:45:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:49:24 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 22:05:43 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ int		check_map_inputs(char *map_str, int *lines, int i, int mod)
 		*lines += 1;
 	while (map_str[i] == '\n')
 		i++;
-	if (map_str[i] || mod != 1)
-		return (-1);
+	if (map_str[i])
+		return (print_error_parsing(4));
+	if (mod != 1)
+		return (print_error_parsing(8));
 	return (1);
 }
 
@@ -99,7 +101,7 @@ int		create_map_tab(char *map_str, char **map_tab, int i, int lines)
 		if (map_tab[j] == NULL)
 		{
 			ft_free_map(map_tab, j);
-			return (-1);
+			return (print_error_parsing(10));
 		}
 		else
 			create_map_line(map_tab, map_str, j, col, &i);
@@ -126,12 +128,18 @@ char	**map_creation(char *map_str, int pos, t_map *map)
 		return (NULL);
 	col = count_bigger_line(map_str, i);
 	if (col < 3 || lines < 3)
+	{
+		print_error_parsing(14);
 		return (NULL);
+	}
 	map->map_col = col;
 	map->map_lin = lines;
 	map_tab = malloc(sizeof(char*) * (lines + 1));
 	if (map_tab == NULL)
+	{
+		print_error_parsing(10);
 		return (NULL);
+	}
 	if (create_map_tab(map_str, map_tab, i, lines) == -1)
 		return (NULL);
 	free(map_str);

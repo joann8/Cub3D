@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 11:51:28 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/13 11:12:15 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 22:14:53 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,20 @@ int		check_arg1(char *av)
 
 int check_arg(int ac, char **av)
 {
-	if (ac < 2 || ac > 4)
+	if (ac < 2 || ac > 3)
+	{
+		printf("---Error arguments---\nWrong number of arguments.\n");
 		return (-1);
+	}
 	if (ac == 3)
 	{
 		if (check_arg2(av[2]) == -1)
+		{
+			printf("---Error arguments---\nThe 3rd argument is not valid.\n");
 			return (-1);
+		}
 	}
-	return (1);
+	return (ac);
 }
 
 
@@ -79,7 +85,7 @@ int		check_path_ext(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '.')
+		if (str[i] == '.' && i != 0)
 			dot++;
 		i++;
 	}
@@ -97,10 +103,19 @@ int		check_path_ext(char *str)
 int		check_path_open(char *str)
 {
 	int		fd;
+	int		bytes;
+	char	buf[4096];
 
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
 		return (-1);
+	bytes = 1;
+	while (bytes)
+	{
+		bytes = read(fd, buf, 4096);
+		if (bytes == -1)
+			return(-1);
+	}
 	close (fd);
 	return (1);
 }

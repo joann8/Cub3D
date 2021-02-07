@@ -27,11 +27,15 @@ int main(int ac, char **av)
 	t_ray 		ray;
 	t_text		t;
 	t_mlx 		m; 
+	int mod;
 
 //	t_sprite	*s;
 	
 	(void)ac;
 //	s = NULL;
+	mod = check_arg(ac, av);
+	if (mod == -1)
+		return (-1);
 	d.mlx = &m;
 	d.mlx->ptr = mlx_init();
 	if(d.mlx->ptr == NULL)
@@ -45,14 +49,10 @@ int main(int ac, char **av)
 	//printf("is ok2\n");
 	map_tab = map_parsing(av[1], &map);
 	//printf("is ok3\n");
-	print_mapdata(&map);
+	//print_mapdata(&map);
 	//printf("is ok3\n");
 	if (map_tab == NULL)
-	{
-		print_error_parsing(err_num);
-		//printf("\n****Error****\n");
 		return (0);
-	}
 	else
 	{
 		print_maptab(map_tab);

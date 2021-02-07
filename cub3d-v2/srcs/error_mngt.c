@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 11:42:58 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 19:21:39 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 21:48:55 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_error_parsing(int err_num)
 {
-	printf("Error parsing\n");
+	printf("---Error parsing---\n");
 	//ouverture du fichier
 	if (err_num == 1)
 		printf("Missing 1st argument.\n"); 
@@ -29,21 +29,21 @@ int	print_error_parsing(int err_num)
 	else if (err_num == 6)
 		printf("Wrong inputs for the scene.\n");
 	else if (err_num == 7)
-		printf("Map not surronded by walls.\n");
+		printf("Map inputs are incorrect.\n");
 	else if (err_num == 8)
-		printf("Several first position for the player.\n");		
-	else if (err_num == 9)
-		printf("No first position for the player.\n");		
+		printf("Player first position is not correct.\n");		
 	else if (err_num == 10)
 		printf("Error occurs while allocating memory.\n");	
 	else if (err_num == 11)
 		printf("Wrong inputs for texture path.\n");	
 	else if (err_num == 12)
-		printf("Error occurs when opening texture path.\n");
+		printf("Error occurs when opening/reading texture path.\n");
 	else if (err_num == 13)
-		printf("Wrong inputs for color (floor or ceiling).\n");	
+		printf("Wrong inputs for resolution, floor or ceiling.\n");	
 	else if (err_num == 14)
-		printf("Negative value for color (floor or ceiling).\n");	
+		printf("Map is too small.\n");	
+	else if (err_num == 15)
+		printf("At least 2 walls have a similar texture.\n");	
 	else
 		printf("Error not yet defined.\n");
 	return (-1);
@@ -52,7 +52,7 @@ int	print_error_parsing(int err_num)
 int	print_error_mlx(int err_num, t_data *d)
 {
 	close_game(d);
-	printf("Error Software\n");
+	printf("---Error Mlx---\n");
 	if (err_num == 1)
 		printf("Connection between software and display failed.\n");	
 	if (err_num == 2)

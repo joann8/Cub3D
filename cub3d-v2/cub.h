@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 19:23:17 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 22:13:25 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 #include<math.h> //a verifier
 
 int				check_arg1(char *av);
+int				check_arg(int ac, char **av);
 int				check_path_ext(char *str);
 int				check_path_open(char *str);
 char			*map_create_str(char *av);

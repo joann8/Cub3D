@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:00:49 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 17:58:44 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 21:41:14 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,19 @@ int		check_others(t_map *map)
 	if (map->r == 1 && map->c == 1 && map->f == 1 && map->s == 1
 			&& map->no == 1 && map->so == 1 && map->ea == 1 && map->we == 1)
 		return (1);
-	return (0);
+	return (-1);
+}
+
+int		check_walls_texture(t_map *map)
+{
+	if(ft_strncmp(map->no_path, map->so_path, ft_strlen(map->no_path)) != 0
+		&& ft_strncmp(map->no_path, map->ea_path, ft_strlen(map->no_path)) != 0
+	 	&& ft_strncmp(map->no_path, map->we_path, ft_strlen(map->no_path)) != 0
+		&& ft_strncmp(map->so_path, map->ea_path, ft_strlen(map->so_path)) != 0
+		&& ft_strncmp(map->so_path, map->we_path, ft_strlen(map->so_path)) != 0
+		&& ft_strncmp(map->we_path, map->ea_path, ft_strlen(map->ea_path)) != 0)
+		return (1);
+	return (print_error_parsing(15));
 }
 
 int		map_data_others_bis(char *map_str, t_map *map, int *pos)
@@ -118,19 +130,25 @@ char	**map_parsing(char *av, t_map *map)
 	i = 0;
 	if (map_data_others(map_str, map, &i) == -1)
 	{
+		print_error_parsing(4);
 		free(map_str);
 		return (NULL);
 	}
-	if (map_str[i] == '\0' || check_others(map) == 0)
+	if (check_others(map) == -1)
 	{
 		print_error_parsing(5);
+		free(map_str);
+		return (NULL);
+	}
+
+	if (check_walls_texture(map) == -1)
+	{
 		free(map_str);
 		return (NULL);
 	}
 	map_tab = map_creation(map_str, i, map);
 	if (map_tab == NULL)
 	{
-		print_error_parsing(10);
 		free(map_str);
 		return (NULL);
 	}

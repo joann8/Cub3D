@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:08:47 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 18:12:10 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/07 21:29:57 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		data_r(char *map_str, t_map *map, int *position)
 		map->r = 1;
 	}
 	else
-		return (print_error_parsing(14));
+		return (print_error_parsing(13));
 	*position = i;
 	return (1);
 }
@@ -78,7 +78,7 @@ int		data_f(char *map_str, t_map *map, int *position)
 			&& (map->f_b >= 0 && map->f_b <= 255))
 		map->f = 1;
 	else
-		return (print_error_parsing(14));
+		return (print_error_parsing(13));
 	*position = i;
 	return (1);
 }
@@ -102,7 +102,7 @@ int		data_c(char *map_str, t_map *map, int *position)
 			&& (map->c_b >= 0 && map->c_b <= 255))
 		map->c = 1;
 	else
-		return (-1);
+		return (print_error_parsing(13));
 	*position = i;
 	return (1);
 }
