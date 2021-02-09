@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 14:41:30 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:25:43 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/08 11:10:01 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,12 @@ double	within_rad(double rad)
 	while (rad2 < 0)
 		rad2 += 2 * M_PI;
 	return (rad2);
+}
+
+double		calculate_distance(double x1, double x2, double y1, double y2)
+{
+	double	result;
+
+	result = sqrt(((x1 - x2) * (x1 - x2)) + ((y1 - y2) * (y1 - y2)));
+	return (result);
 }

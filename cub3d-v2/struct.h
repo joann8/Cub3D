@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 22:05:36 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/09 16:31:33 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,5 +174,36 @@ typedef struct s_data
 	char 			**map_tab;
 
 }					t_data;
+
+typedef struct		s_bmp_color
+{
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+}					t_bmp_color;
+
+typedef struct		s_img_header
+{
+	int				size_img_header;
+	int				width;
+	int				length;
+	short			nb_planes;
+	short			bpp;
+	int				compression;
+	int				size_img_total;
+	int				res_ver;
+	int				res_hor;
+	int				color_array;
+	int				img_array;
+}					t_img_header;
+
+typedef struct		s_file_header
+{
+	char			signature[2];
+	int				size;
+	int				reserved;
+	int				offset_img;
+	t_img_header	img;
+}					t_file_header;
 
 #endif

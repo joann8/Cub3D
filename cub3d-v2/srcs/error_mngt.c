@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 11:42:58 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 21:48:55 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/09 18:14:49 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_error_parsing(int err_num)
 {
-	printf("---Error parsing---\n");
+	printf("Error\n");
 	//ouverture du fichier
 	if (err_num == 1)
 		printf("Missing 1st argument.\n"); 
@@ -49,10 +49,9 @@ int	print_error_parsing(int err_num)
 	return (-1);
 }
 
-int	print_error_mlx(int err_num, t_data *d)
+int	print_error_mlx(int err_num)
 {
-	close_game(d);
-	printf("---Error Mlx---\n");
+	printf("Error\n");
 	if (err_num == 1)
 		printf("Connection between software and display failed.\n");	
 	if (err_num == 2)
@@ -63,4 +62,17 @@ int	print_error_mlx(int err_num, t_data *d)
 		printf("Error not yet defined.\n");
 	return(-1);
 }
+
+int	print_error_else(int err_num)
+{
+	printf("Error\n");
+	if (err_num == 1)
+		printf("Error occurs while creating save.bmp.\n");	
+	else if (err_num == 2)
+		printf("Error occur while allocating memory for saving bmp.\n");	
+	else
+		printf("Error not yet defined.\n");
+	return(-1);
+}
+	
 	

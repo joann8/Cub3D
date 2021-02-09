@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 22:29:11 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:09:08 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/09 19:26:08 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,11 @@ int		ray_wall(t_data *d)
 	int				start;
 
 	dist_proj_plan = (d->map->r_x / 2) / tan((d->player->fov / 2));
+
 	corrected_dist = d->ray->dist * cos(d->ray->angle - d->player->angle);
 	d->ray->height = (((d->map->tile_col / corrected_dist) * dist_proj_plan));
+	//if (d->ray->height > d->map->r_y * 2)
+	//	d->ray->height = d->map->r_y * 2;
 	start = (d->map->r_y / 2) - ((d->ray->height / 2));
 	if (d->ray->hit_vert == 1)
 		assign_texture_v(d);

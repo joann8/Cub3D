@@ -1,38 +1,63 @@
-//#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/08 11:06:33 by jacher            #+#    #+#             */
+/*   Updated: 2021/02/09 18:13:43 by jacher           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub.h"
-#include<mlx.h>
 
-void check_res(t_data *d)
+int	prepare_game_bis(t_data *d)
 {
-	int		width;
-	int		height;
+	d->player = malloc(sizeof(t_player));
+	d->t = malloc(sizeof(t_text));
+	d->ray = malloc(sizeof(t_ray));
+	if (d->player == NULL || d->t == NULL || d->ray == NULL)
+		return (print_error_parsing(10));
+	f_init_player(d->player, d->map);
+	return(1);
+}	
 
-	mlx_get_screen_size(d->mlx->ptr, &width, &height);
-	printf("w = %d, h = %d\n", width, height);
-	printf("w = %u, h = %u\n", d->map->r_x,d->map->r_y);
-	if (d->map->r_x > (unsigned int)width)
-		d->map->r_x = (unsigned int)width;
-	if (d->map->r_y > (unsigned int)height)
-		d->map->r_y = (unsigned int)height;
-	return ; 
+int prepare_game(t_data *d, char **av, int mod)
+{
+	d->map = malloc(sizeof(t_map));
+	if (d->map == NULL)
+		return(print_error_parsing(10));
+	f_init_mapdata(d->map);
+	d->map_tab = map_parsing(av[1], d->map);
+	if (d->map_tab == NULL)
+		return (-1);
+	check_res(d, mod);
+	define_tile_size(d->map);
+	count_sprite(d);
+	if (d->map->sprite >= 1)
+	{
+		record_sprite(d, d->map->sprite);
+		if (!d->sprite)
+			return (-1);
+	}
+	if (prepare_game_bis(d) == -1)
+		return(-1);
+	return (1);
 }
 
 int main(int ac, char **av)
 {
-	char		**map_tab;
-	t_map		map;
-	int			err_num;
-	t_player	player;
 	t_data		d;
-	t_ray 		ray;
-	t_text		t;
 	t_mlx 		m; 
-	int mod;
+	int			mod;
 
-//	t_sprite	*s;
-	
-	(void)ac;
-//	s = NULL;
+	d.sprite = NULL;
+	d.player = NULL;
+	d.ray = NULL;
+	d.t = NULL;
+	d.map = NULL;
+	d.map_tab = NULL; 
 	mod = check_arg(ac, av);
 	if (mod == -1)
 		return (-1);
@@ -43,48 +68,14 @@ int main(int ac, char **av)
 		print_error_mlx(1, &d);
 		return(-1);
 	}
-	err_num = 0;
-	//printf("is ok\n");
-	f_init_mapdata(&map);
-	//printf("is ok2\n");
-	map_tab = map_parsing(av[1], &map);
-	//printf("is ok3\n");
-	//print_mapdata(&map);
-	//printf("is ok3\n");
-	if (map_tab == NULL)
-		return (0);
-	else
+	if (prepare_game(&d, av, mod) == 1)
 	{
-		print_maptab(map_tab);
-		printf("\n SUCCESS MOTHER FUCKER!!!!!\n");
+		if (mod == 2)
+			mlx_main(&d, 2);
+		else
+			mlx_main(&d, 3);
 	}
-	d.map_tab = map_tab;
-	d.map = &map;
-	check_res(&d);
-	define_tile_size(&map);
-	
-//	printf("is ok\n");
-	count_sprite(&d);
-//	printf("is ok2\n");
-//	printf("sprite = %d\n", d.map->sprite);
-	if (d.map->sprite >= 1)
-	{
-		record_sprite(&d, map.sprite);
-//		printf("is ok3\n");
-		if (!d.sprite)
-			return (-1);
-	}
-//	printf("count sprite = %d\n", map.sprite);
-//	print_sprite(&d, map.sprite);
-	f_init_player(&player, &map);
-	d.player = &player;
-	d.ray = &ray;
-	d.t = &t;
-	mlx_main(&d);
-	printf("out of mlx\n");
-	f_free_mapdata(&map);
-	//ft_free_sprite(&d);
-	free(d.sprite);
-	ft_free_map(map_tab, 2147483647);	
-	return (-1);
+	//free mlx
+	free_data(&d);
+	return (1);
 }

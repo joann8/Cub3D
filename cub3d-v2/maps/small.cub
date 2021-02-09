@@ -1,11 +1,11 @@
 
-SO ./resources/textures/south.xpm
-WE ./resources/textures/west.xpm
-S ./resources/textures/sprite.xpm
-EA ./resources/textures/east.xpm
+SO images/south.xpm
+WE ./images/west.xpm
+S ./images/sprite.xpm
+EA ./images/east.xpm
 C 0,0,100
 F 46,46,46
-NO ./resources/textures/north.xpm
+NO ./images/north.xpm
 R 500 500
 
 111111111111111111111111

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 19:16:55 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 21:47:56 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/09 19:29:46 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,18 @@ void	replace_last_spaces(char **map_tab)
 
 int		map_check_walls(char **map_tab)
 {
-//	printf("____enter check walls____\n");
+	//printf("____enter check walls____\n");
 	if (check_ext_lin(map_tab) == -1)
 		return (print_error_parsing(7));
-//	printf("==> ok1\n");
+	//printf("==> ok1\n");
 	if (check_ext_col(map_tab) == -1)
 		return (print_error_parsing(7));
-//	printf("==> ok2\n");
+	//printf("==> ok2\n");
+//	print_maptab(map_tab);
 	if (check_around('0', map_tab) == -1
-			|| check_around('2', map_tab) == -1
-			|| check_around(' ', map_tab) == -1)
+			|| check_around('2', map_tab) == -1)
 		return (print_error_parsing(7));
 	replace_last_spaces(map_tab);
-//	printf("==> exit with succes\n");
+	//printf("==> exit with succes\n");
 	return (1);
 }

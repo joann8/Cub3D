@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*   struct_reset.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/07 19:31:08 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/09 18:54:10 by jacher           ###   ########.fr       */
+/*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
+/*   Updated: 2021/02/08 10:56:59 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
-
-unsigned int	mlx_img_get_pixel_value(t_img *img, int x, int y)
+void	f_reset_ray(t_ray *r)
 {
-	char *dst;
-
-	dst = img->addr + (y * img->length) + (x * 4);
-	return (*(unsigned*)dst);
+	r->res = 1;
+	r->x_hit = 0;
+	r->y_hit = 0;
+	r->dist = 0;
+	r->height = 0;
+	r->fac_up = 0;
+	r->fac_down = 0;
+	r->fac_right = 0;
+	r->fac_left = 0;
+	r->hit_vert = 0;
 }
 
-void			my_mlx_pixel_put(t_data *d, int x, int y, int color)
+void	f_reset_sprite(t_data *d)
 {
-	char *dst;
-	
-//	printf("x = %d | y = %d\n", x, y);
-	dst = d->mlx->img->addr + (y * d->mlx->img->length
-		+ x * (d->mlx->img->bits / 8));
-	*(unsigned int*)dst = color;
+	int i;
+
+	i = 0;
+	while (i < d->map->sprite)
+	{
+		d->sprite[i].dist = 0;
+		d->sprite[i].angle = 0;
+		d->sprite[i].height = 0;
+		d->sprite[i].length = 0;
+		d->sprite[i].visible = 0;
+		i++;
+	}
 }

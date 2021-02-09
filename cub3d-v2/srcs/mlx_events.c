@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_key_press.c                                    :+:      :+:    :+:   */
+/*   mlx_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:26:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 19:27:16 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/09 19:27:11 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ int		player_move(t_data *d)
 
 void	events(t_data *d)
 {
+	mlx_hook(d->mlx->win, 33, 1L << 17, &mlx_loop_end, d->mlx->ptr);
 	mlx_loop_hook(d->mlx->ptr, &player_move, d);
 	mlx_hook(d->mlx->win, 2, 1L << 0, &key_press, d);
 	mlx_hook(d->mlx->win, 3, 1L << 1, &key_release, d);
-	mlx_hook(d->mlx->win, 33, 1L << 17, &mlx_loop_end, d);
 	mlx_loop(d->mlx->ptr);
 }

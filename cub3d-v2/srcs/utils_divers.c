@@ -6,13 +6,13 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:14:08 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 18:28:44 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/09 18:40:08 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-int				ft_atoi_cub(const char *str, int *pos)
+int			ft_atoi_cub(const char *str, int *pos)
 {
 	int		i;
 	int		res;
@@ -30,20 +30,7 @@ int				ft_atoi_cub(const char *str, int *pos)
 	return (res);
 }
 
-void			ft_free_map(char **map_tab, int j)
-{
-	int i;
-
-	i = 0;
-	while (i < j && map_tab[i])
-	{
-		free(map_tab[i]);
-		i++;
-	}
-	free(map_tab); // pas sure
-}
-
-int				define_tile_size(t_map *map)
+int			define_tile_size(t_map *map)
 {
 	map->tile_col = map->r_x / map->map_col;
 	map->tile_lin = map->r_y / map->map_lin;
@@ -54,4 +41,53 @@ int				define_tile_size(t_map *map)
 	map->tile_col = map->tile_min; // A CHANGER
 	map->tile_lin = map->tile_min; // A CHANGER
 	return (1);
+}
+
+int			hit_a_wall(double x, double y, char **map_tab, t_map *map)
+{
+	int		i_lin;
+	int		j_col;
+	
+	if (x < 0 || y < 0)
+		return(1);
+	i_lin = y / map->tile_lin;
+	j_col = x / map->tile_col;
+	if (i_lin < map->map_lin && j_col < map->map_col
+		&& map_tab[i_lin][j_col] == '0')
+		return (0); //peut ton marcher sur un objet?
+	else if (i_lin < map->map_lin && j_col < map->map_col
+			&& (map_tab[i_lin][j_col] == '1' ||  map_tab[i_lin][j_col] == 'x'))
+		return (1);
+	else if (i_lin < map->map_lin && j_col < map->map_col
+			&& map_tab[i_lin][j_col] == '2')
+		return (2);
+	else
+		return (-1);
+}
+
+void check_res(t_data *d, int mod)
+{
+	int		width;
+	int		height;
+
+	mlx_get_screen_size(d->mlx->ptr, &width, &height);
+	if (mod == 2)
+	{
+		if (d->map->r_x > (unsigned int)width)
+			d->map->r_x = (unsigned int)width;
+		if (d->map->r_y > (unsigned int)height)
+			d->map->r_y = (unsigned int)height;
+	}
+	return ; 
+}
+
+int			create_trgb(int t, int r, int g, int b)
+{
+	int color;
+
+	color = t << 24;
+	color |= r << 16;
+	color |= g << 8;
+	color |= b;
+	return (color);
 }

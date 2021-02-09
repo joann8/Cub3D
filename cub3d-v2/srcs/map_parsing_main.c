@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:00:49 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 21:41:14 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/08 12:15:32 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int		record_player_pos(t_map *map, char **map_tab)
 		}
 		i++;
 	}
-	print_error_parsing(9);
+	print_error_parsing(8);
 	return (-1);
 }
 
@@ -125,37 +125,43 @@ char	**map_parsing(char *av, t_map *map)
 	if (map_str == NULL)
 	{
 		print_error_parsing(10);
+		printf("here1\n");
 		return (NULL);
 	}
 	i = 0;
 	if (map_data_others(map_str, map, &i) == -1)
 	{
-		print_error_parsing(4);
+		//print_error_parsing(4);
 		free(map_str);
+		printf("here2\n");
 		return (NULL);
 	}
 	if (check_others(map) == -1)
 	{
 		print_error_parsing(5);
 		free(map_str);
+		printf("here3\n");
 		return (NULL);
 	}
 
 	if (check_walls_texture(map) == -1)
 	{
 		free(map_str);
+		printf("here4\n");
 		return (NULL);
 	}
 	map_tab = map_creation(map_str, i, map);
 	if (map_tab == NULL)
 	{
 		free(map_str);
+		printf("here5\n");
 		return (NULL);
 	}
 	if (record_player_pos(map, map_tab) == -1 ||
 			map_check_walls(map_tab) == -1)
 	{
 		ft_free_map(map_tab, 2147483647);//pas sure d'avoir le droit
+		printf("here6\n");
 		return (NULL);
 	}
 	return (map_tab);

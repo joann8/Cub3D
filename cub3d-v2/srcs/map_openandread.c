@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:44:09 by jacher            #+#    #+#             */
-/*   Updated: 2021/01/06 15:33:05 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/09 16:11:26 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int		map_count_char(char *av)
 		}
 		count += bytes;
 	}
-	close(fd);
+	if (close(fd) == -1)
+		return(-1);
 	return (count);
 }
 
@@ -65,7 +66,8 @@ int		map_copy_str(char *av, char *map_str)
 		}
 	}
 	//map_str[i] = '\0'; //on peut le mettre dans la fonction en mont si besoin
-	close(fd);
+	if (close(fd) == -1)
+		return(-1);
 	return (bytes);
 }
 

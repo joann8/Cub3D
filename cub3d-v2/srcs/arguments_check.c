@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 11:51:28 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 22:14:53 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/09 19:35:31 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,23 @@ int check_arg(int ac, char **av)
 {
 	if (ac < 2 || ac > 3)
 	{
-		printf("---Error arguments---\nWrong number of arguments.\n");
+		printf("Error\nWrong number of arguments.\n");
 		return (-1);
 	}
-	if (ac == 3)
+	else
 	{
-		if (check_arg2(av[2]) == -1)
+		if (check_arg1(av[1]) == -1)	
 		{
-			printf("---Error arguments---\nThe 3rd argument is not valid.\n");
+			printf("Error\nThe 2rd argument is not a .cub.\n");
 			return (-1);
+		}
+		if (ac == 3)
+		{
+			if (check_arg2(av[2]) == -1)
+			{
+				printf("Error\nThe 3rd argument is not valid.\n");
+				return (-1);
+			}
 		}
 	}
 	return (ac);
@@ -116,6 +124,7 @@ int		check_path_open(char *str)
 		if (bytes == -1)
 			return(-1);
 	}
-	close (fd);
+	if (close (fd) == -1)
+		return(-1);
 	return (1);
 }

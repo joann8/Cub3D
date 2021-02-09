@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 19:16:55 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 22:07:26 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/09 19:30:16 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ int		check_ext_lin(char **map_tab)
 {
 	int	i;
 	int	j;
-
+	
 	i = 0;
 	while (map_tab[i] != NULL)
 	{
 		j = 0;
-		while (map_tab[i][j] == ' ')
+		while (map_tab[i][j] == ' ' || map_tab[i][j] == 'x')
 		{
 			map_tab[i][j] = 'x';//les espaces checkes deviennent des x
 			j++;
@@ -76,7 +76,7 @@ int		check_ext_lin(char **map_tab)
 	while (map_tab[i] != NULL)
 	{
 		j = ft_strlen(map_tab[0]) - 1;
-		while (j >= 0 && map_tab[i][j] == ' ')
+		while (j >= 0 && (map_tab[i][j] == ' '|| map_tab[i][j] == 'x'))
 		{
 			map_tab[i][j] = 'x';//les espaces checkes deviennent des x
 			j--;

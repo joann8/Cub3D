@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 15:11:03 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/07 19:30:20 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/08 10:47:56 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,34 +53,6 @@ int		create_texture(t_data *d)
 	}
 	create_texture_bis(d);
 	return (1);
-}
-
-void	free_textures(t_data *d)
-{
-	if (d->t->text_n->ptr)
-		mlx_destroy_image(d->mlx->ptr, d->t->text_n->ptr);
-	if (d->t->text_s->ptr)
-		mlx_destroy_image(d->mlx->ptr, d->t->text_s->ptr);
-	if (d->t->text_e->ptr)
-		mlx_destroy_image(d->mlx->ptr, d->t->text_e->ptr);
-	if (d->t->text_w->ptr)
-		mlx_destroy_image(d->mlx->ptr, d->t->text_w->ptr);
-	if (d->t->text_spr->ptr)
-		mlx_destroy_image(d->mlx->ptr, d->t->text_spr->ptr);
-}
-
-void	free_textures_ptr(t_data *d)
-{
-	if (d->t->text_n)
-		free(d->t->text_n);
-	if (d->t->text_s->ptr)
-		free(d->t->text_s);
-	if (d->t->text_e->ptr)
-		free(d->t->text_e);
-	if (d->t->text_w->ptr)
-		free(d->t->text_w);
-	if (d->t->text_spr->ptr)
-		free(d->t->text_spr);
 }
 
 int		init_texture(t_data *d)

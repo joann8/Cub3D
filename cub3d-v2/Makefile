@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2021/02/07 19:02:20 by jacher           ###   ########.fr        #
+#    Updated: 2021/02/09 18:12:08 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = cub3D
 SRCS = main.c \
 srcs/arguments_check.c \
 srcs/error_mngt.c \
+srcs/free_functions.c \
 srcs/map_check_col_lin.c \
 srcs/map_check_diag.c \
 srcs/map_creation.c \
@@ -24,21 +25,24 @@ srcs/map_parsing_nsew.c \
 srcs/map_parsing_rcf.c \
 srcs/map_parsing_walls.c \
 srcs/map_sprite.c \
-srcs/mlx_key_press.c \
+srcs/mlx_events.c \
 srcs/mlx_main.c \
 srcs/mlx_player_move.c \
 srcs/mlx_textures.c \
 srcs/mlx_utils.c \
 srcs/print_support.c \
-srcs/utils_algo.c \
 srcs/utils_divers.c \
-srcs/utils_struct.c \
-srcs/utils_trigo.c  \
+srcs/utils_maths.c  \
+srcs/struct_init.c \
+srcs/struct_reset.c \
 srcs/ray_main.c \
 srcs/ray_casting.c \
 srcs/ray_casting_hv.c \
 srcs/ray_casting_sprite.c \
-srcs/ray_walls.c 
+srcs/ray_walls.c \
+srcs/bmp.c \
+srcs/bmp_utils.c
+
 
 OBJS = ${SRCS:.c=.o}
 
