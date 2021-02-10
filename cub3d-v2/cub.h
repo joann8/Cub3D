@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/09 18:16:10 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/10 13:08:53 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ void			ft_free_map(char **map_tab, int j);
 //map_parsing
 char			**map_parsing(char *av, t_map *map);
 
+//map check inputs
+int				check_str(char *map_str, int *i, t_map *map);
+
 //map_creation
 char			**map_creation(char *map_str, int pos, t_map *map);
 
@@ -64,17 +67,17 @@ int				data_ea(char *map_str, t_map *map, int *position);
 int				data_we(char *map_str, t_map *map, int *position);
 int				data_s(char *map_str, t_map *map, int *position);
 
+//map_parsing utils
+int				skip_space_folder(char *map_str, int *i);
+int				record_player_pos(t_map *map, char ** map_tab);
+int				check_walls_texture(t_map *map, char * map_str);
+
 //map_check_col_int
 int				check_lin(char **map_tab, int lin, int col);
 int				check_col(char **map_tab, int lin, int col);
 int				check_ext_col(char **map_tab);
 int				check_ext_lin(char **map_tab);
 
-//map_check_diag
-int				check_diag1(char **map_tab, int lin, int col);
-int				check_diag2(char **map_tab, int lin, int col);
-int				check_diag3(char **map_tab, int lin, int col);
-int				check_diag4(char **map_tab, int lin, int col);
 
 //map_check_walls
 int				map_check_walls(char **map_tab);

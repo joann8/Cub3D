@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2021/02/09 18:12:08 by jacher           ###   ########.fr        #
+#    Updated: 2021/02/10 12:43:01 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,15 +16,16 @@ SRCS = main.c \
 srcs/arguments_check.c \
 srcs/error_mngt.c \
 srcs/free_functions.c \
-srcs/map_check_col_lin.c \
-srcs/map_check_diag.c \
-srcs/map_creation.c \
-srcs/map_openandread.c \
-srcs/map_parsing_main.c \
-srcs/map_parsing_nsew.c \
-srcs/map_parsing_rcf.c \
-srcs/map_parsing_walls.c \
-srcs/map_sprite.c \
+srcs/parsing_map_checkwalls.c \
+srcs/parsing_map_create_str.c \
+srcs/parsing_map_checkinputs.c \
+srcs/parsing_map_create_tab.c \
+srcs/parsing_main.c \
+srcs/parsing_textures.c \
+srcs/parsing_rcf.c \
+srcs/parsing_map.c \
+srcs/parsing_utils.c \
+srcs/parsing_sprite.c \
 srcs/mlx_events.c \
 srcs/mlx_main.c \
 srcs/mlx_player_move.c \

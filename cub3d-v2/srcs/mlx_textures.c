@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 15:11:03 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/08 10:47:56 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/09 19:39:41 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		create_texture(t_data *d)
 			|| d->t->text_w->ptr == NULL || d->t->text_e->ptr == NULL
 			|| d->t->text_spr->ptr == NULL)
 	{
-		print_error_mlx(3, d);
+		print_error_mlx(3);
 		return (-1);
 	}
 	create_texture_bis(d);
@@ -66,7 +66,7 @@ int		init_texture(t_data *d)
 			|| d->t->text_w == NULL || d->t->text_e == NULL
 			|| d->t->text_spr == NULL)
 	{
-		print_error_mlx(3, d);
+		print_error_mlx(3);
 		return (-1);
 	}
 	if (create_texture(d) == -1)

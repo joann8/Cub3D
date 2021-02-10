@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 09:10:14 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 22:10:13 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/10 11:12:21 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	draw_sprite(t_data *d, int i, double col, double start_x)
 		{
 			y_color = k * (d->t->height_spr / d->sprite[i].height);
 			color = mlx_img_get_pixel_value(d->t->text_spr, x_color, y_color);
-			if (color != 0 && color != d->map->spr_col_no)
+			if (color != d->map->spr_col_no)
 				my_mlx_pixel_put(d, start_x + col, start_y + k, color);
 		}
 		k++;

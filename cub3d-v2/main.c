@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 11:06:33 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/09 18:13:43 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/09 19:39:06 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int main(int ac, char **av)
 	d.mlx->ptr = mlx_init();
 	if(d.mlx->ptr == NULL)
 	{
-		print_error_mlx(1, &d);
+		print_error_mlx(1);
 		return(-1);
 	}
 	if (prepare_game(&d, av, mod) == 1)
