@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parsing_rcf.c                                  :+:      :+:    :+:   */
+/*   parsing_rcf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:08:47 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 11:19:27 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/10 19:06:41 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,12 @@ int		data_r(char *map_str, t_map *map, int *position)
 	i = *position + 1;
 	if (skip_space_comma(map_str, &i, 1) == -1)
 		return (print_error_parsing(13));
-	map->r_x_i = ft_atoi_cub(map_str + i, &i);
+	map->r_x = ft_atoi_cub(map_str + i, &i);
 	if (skip_space_comma(map_str, &i, 1) == -1)
 		return (print_error_parsing(13));
-	map->r_y_i = ft_atoi_cub(map_str + i, &i);
-	if (map->r_x_i > 0 && map->r_y_i > 0)
-	{
-		map->r_x = map->r_x_i;
-		map->r_y = map->r_y_i;
+	map->r_y = ft_atoi_cub(map_str + i, &i);
+	if (map->r_x > 0 && map->r_y > 0)
 		map->r = 1;
-	}
 	else
 		return (print_error_parsing(13));
 	*position = i;

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 18:28:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/02 21:23:43 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/10 18:10:52 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ray_cast_horizontal(t_data *d, t_coord *c, t_hit *h)
 	double	min;
 	int		res;
 
-	ray_cast_h_coord(d, c);
 	min = 0;
 	if (d->ray->fac_up == 1)
 		min = 1;
@@ -91,7 +90,6 @@ void	ray_cast_vertical(t_data *d, t_coord *c, t_hit *h)
 	double	min;
 	int		res;
 
-	ray_cast_v_coord(d, c);
 	min = 0;
 	if (d->ray->fac_left == 1)
 		min = 1;

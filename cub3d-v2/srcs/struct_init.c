@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/09 19:20:07 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/10 19:16:25 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,12 @@ void	f_init_mapdata_bis(t_map *map)
 	map->tile_col = -1;
 	map->tile_min = -1;
 	map->sprite = 0;
+	map->spr_col_no = 0;
 }
 
 void	f_init_mapdata(t_map *map)
 {
 	map->r = -1;
-	map->r_x_i = 0;
-	map->r_y_i = 0;
 	map->r_x = 0;
 	map->r_y = 0;
 	map->no = -1;
@@ -70,8 +69,6 @@ double	f_init_dir_ang(char c)
 
 void	f_init_player(t_player *player, t_map *map)
 {
-	player->x_max = map->r_x;
-	player->y_max = map->r_y;
 	player->x = ((map->player_col * map->tile_col) + (map->tile_col / 2));
 	player->y = ((map->player_lin * map->tile_lin) + (map->tile_lin / 2));
 	player->dir_turn = 0;
@@ -81,13 +78,14 @@ void	f_init_player(t_player *player, t_map *map)
 	player->angle = f_init_dir_ang(map->player_pos);
 	player->speed_walk = 2;
 	player->speed_ang = deg_to_rad(3);
+	player->dist_plan = (map->r_x / 2) / (tan(player->fov / 2));
 }
 
 void	f_init_sprite(t_sprite *s)
 {
 	s->x_d = 0;
 	s->y_d = 0;
-	s->x_d = 0;
-	s->y_d = 0;
+	s->x_i = 0;
+	s->y_i = 0;
 	s->dist = 0;
 }

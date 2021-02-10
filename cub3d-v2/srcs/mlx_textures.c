@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 15:11:03 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/09 19:39:41 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/10 17:20:22 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	create_texture_bis(t_data *d)
 	d->t->text_spr->addr = mlx_get_data_addr(d->t->text_spr->ptr,
 		&(d->t->text_spr->bits), &(d->t->text_spr->length),
 		&(d->t->text_spr->endian));
-	d->map->spr_col_no = mlx_img_get_pixel_value(d->t->text_spr, 0, 0);// a verifier
+	d->map->spr_col_no = mlx_img_get_pixel_value(d->t->text_spr, 0, 0);
 }
 
 int		create_texture(t_data *d)
@@ -48,7 +48,7 @@ int		create_texture(t_data *d)
 			|| d->t->text_w->ptr == NULL || d->t->text_e->ptr == NULL
 			|| d->t->text_spr->ptr == NULL)
 	{
-		print_error_mlx(3);
+		print_error_mlx(2);
 		return (-1);
 	}
 	create_texture_bis(d);
@@ -66,7 +66,7 @@ int		init_texture(t_data *d)
 			|| d->t->text_w == NULL || d->t->text_e == NULL
 			|| d->t->text_spr == NULL)
 	{
-		print_error_mlx(3);
+		print_error_mlx(4);
 		return (-1);
 	}
 	if (create_texture(d) == -1)

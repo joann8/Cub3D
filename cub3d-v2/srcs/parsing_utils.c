@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:08:47 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 13:02:00 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/10 18:43:18 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,46 +37,6 @@ int		skip_space_folder(char *map_str, int *pos)
 	if (count == 0 || dot > 1)
 		return (print_error_parsing(11));
 	return (count);
-}
-
-int		check_lin(char **map_tab, int lin, int col)
-{
-	int i;
-	int max;
-
-	max = ft_strlen(map_tab[0]);
-	i = col - 1;
-	while (i >= 0 && map_tab[lin][i] != '1' && map_tab[lin][i] != ' ')
-		i--;
-	if (i == -1 || map_tab[lin][i] == ' ')
-		return (-1);
-	i = col + 1;
-	while (i < max && map_tab[lin][i] != '1' && map_tab[lin][i] != ' ')
-		i++;
-	if (i == max || map_tab[lin][i] == ' ')
-		return (-1);
-	return (1);
-}
-
-int		check_col(char **map_tab, int lin, int col)
-{
-	int i;
-	int max;
-
-	max = 0;
-	while (map_tab[max] != NULL)
-		max++;
-	i = lin - 1;
-	while (i >= 0 && map_tab[i][col] != '1' && map_tab[i][col] != ' ')
-		i--;
-	if (i == -1 || map_tab[i][col] == ' ')
-		return (-1);
-	i = lin + 1;
-	while (i < max && map_tab[i][col] != '1' && map_tab[i][col] != ' ')
-		i++;
-	if (i == max || map_tab[i][col] == ' ')
-		return (-1);
-	return (1);
 }
 
 int		record_player_pos(t_map *map, char **map_tab)

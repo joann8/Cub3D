@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 16:57:08 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/09 18:23:58 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/10 18:22:10 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		convert_trgb_bmp(t_bmp_color *pixel, t_img *img, int x, int y)
 	pixel->b = (color & 0xFF);
 }
 
-int		get_byte_correction(int r_x)
+int			get_byte_correction(int r_x)
 {
 	char	byte_correction[4];
 	int		i;
@@ -36,6 +36,5 @@ int		get_byte_correction(int r_x)
 	byte_correction[3] = 1;
 	i = (int)(3 * r_x) % 4;
 	correction_byte = byte_correction[i];
-	return(i);
+	return (i);
 }
-	

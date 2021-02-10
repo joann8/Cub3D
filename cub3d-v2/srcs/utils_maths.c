@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_trigo.c                                      :+:      :+:    :+:   */
+/*   utils_maths.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 14:41:30 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/08 11:10:01 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/10 18:15:30 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ double	within_rad(double rad)
 	return (rad2);
 }
 
-double		calculate_distance(double x1, double x2, double y1, double y2)
+double	calculate_distance(double x1, double x2, double y1, double y2)
 {
 	double	result;
 

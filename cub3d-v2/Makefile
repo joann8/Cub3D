@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2021/02/10 12:43:01 by jacher           ###   ########.fr        #
+#    Updated: 2021/02/10 19:44:05 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,11 @@ SRCS = main.c \
 srcs/arguments_check.c \
 srcs/error_mngt.c \
 srcs/free_functions.c \
-srcs/parsing_map_checkwalls.c \
-srcs/parsing_map_create_str.c \
-srcs/parsing_map_checkinputs.c \
-srcs/parsing_map_create_tab.c \
+srcs/parsing_create_maptab_utils.c \
+srcs/parsing_create_mapstr.c \
+srcs/parsing_map_col.c \
+srcs/parsing_map_lin.c \
+srcs/parsing_create_maptab.c \
 srcs/parsing_main.c \
 srcs/parsing_textures.c \
 srcs/parsing_rcf.c \
@@ -31,7 +32,6 @@ srcs/mlx_main.c \
 srcs/mlx_player_move.c \
 srcs/mlx_textures.c \
 srcs/mlx_utils.c \
-srcs/print_support.c \
 srcs/utils_divers.c \
 srcs/utils_maths.c  \
 srcs/struct_init.c \
@@ -39,7 +39,7 @@ srcs/struct_reset.c \
 srcs/ray_main.c \
 srcs/ray_casting.c \
 srcs/ray_casting_hv.c \
-srcs/ray_casting_sprite.c \
+srcs/ray_sprite.c \
 srcs/ray_walls.c \
 srcs/bmp.c \
 srcs/bmp_utils.c
@@ -48,23 +48,19 @@ srcs/bmp_utils.c
 OBJS = ${SRCS:.c=.o}
 
 INC = -I includes/ -I libft/ -I ${MLX_DIR}
-#./usr/include -I libft -I ${MLX_DIR}
 
 CC = clang
 RM = rm -f
-FLAGS =  -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 
 MLX_DIR = ./minilibx-linux
 MLX = ${MLX_DIR}/libmlx_Linux.a
-#MLX_DIR = ./minilibx_mac
-#MLX = ${MLX_DIR}/libmlx.a
 
 
 LIBFT_DIR = ./libft
 LIBFT = ${LIBFT_DIR}/libft.a
 
 LIBS = -L ${LIBFT_DIR} -lft -L ${MLX_DIR} -lmlx -lXext -lX11 -lbsd -lm
-#LIBS = -L${LIBFT_DIR} -lft -L${MLX_DIR} -lmlx -framework AppKit -framework OpenGL -lm 
 
 .c.o: 
 	${CC} ${FLAGS} -c $< -o ${<:.c=.o} ${INC}

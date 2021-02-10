@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_map_checkinputs.c                          :+:      :+:    :+:   */
+/*   parsing_create_maptab_utils.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 14:45:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 12:23:22 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/10 15:26:55 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		check_map_inputs_2(char *map_str, int *lines, int i, int mod)
 	while (map_str[i] == '\n')
 		i++;
 	if (map_str[i])
-		return (print_error_parsing(6));
+		return (print_error_parsing(7));
 	if (mod != 1)
 		return (print_error_parsing(8));
 	return (1);

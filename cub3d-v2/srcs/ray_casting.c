@@ -6,11 +6,28 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 18:28:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/09 19:26:43 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/10 18:10:21 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
+
+int		ray_wall(t_data *d)
+{
+	double			corrected_dist;
+	int				start;
+
+	corrected_dist = d->ray->dist * cos(d->ray->angle - d->player->angle);
+	d->ray->height = (((d->map->tile_col / corrected_dist)
+		* d->player->dist_plan));
+	start = (d->map->r_y / 2) - ((d->ray->height / 2));
+	if (d->ray->hit_vert == 1)
+		assign_texture_v(d);
+	else if (d->ray->hit_vert == -1)
+		assign_texture_h(d);
+	draw_column(d, start);
+	return (1);
+}
 
 void	ray_orientation(t_data *d)
 {
@@ -72,7 +89,9 @@ int		cast_a_ray(t_data *d)
 	h.v_hit = 0;
 	h.h_hit = 0;
 	ray_orientation(d);
+	ray_cast_h_coord(d, &c_h);
 	ray_cast_horizontal(d, &c_h, &h);
+	ray_cast_v_coord(d, &c_v);
 	ray_cast_vertical(d, &c_v, &h);
 	if (h.h_hit == 1 || h.v_hit == 1)
 	{
