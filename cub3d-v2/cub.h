@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/11 14:49:51 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 22:45:02 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int				map_check_walls(char **map_tab);
 unsigned int	count_sprite(t_data *d);
 void			record_sprite(t_data *d, unsigned int count);
 int				ft_atoi_cub(const char *str, int *pos);
-int				check_block_size(t_map *map);
 void			check_res(t_data *d, int mod);
 int				hit_a_wall(double x, double y, char **map_tab, t_map *map);
 int				create_trgb(int t, int r, int g, int b);

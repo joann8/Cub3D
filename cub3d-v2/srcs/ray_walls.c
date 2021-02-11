@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 22:29:11 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/11 12:01:00 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 22:28:12 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		calculate_x_wall(t_data *d)
 	if (d->ray->hit_vert == -1)
 	{
 		tronc = (d->ray->x_hit) / BLOCK;
-		if (d->ray->angle >= 0 && d->ray->angle <= M_PI)
+		if (d->ray->angle > 0 && d->ray->angle < M_PI)
 			x_color = ((d->ray->x_hit) - (BLOCK * tronc)) *
 				(d->t->length / BLOCK);
 		else
@@ -100,28 +100,22 @@ void	assign_texture_h(t_data *d)
 
 void	draw_column(t_data *d, int start)
 {
-	int				i;
 	int				j;
 	int				color;
 
-	i = 0;
-	while (i < (int)d->ray->res)
+	j = 0;
+	while (j < start && j < (int)d->map->r_y)
 	{
-		j = 0;
-		while (j < start && j < (int)d->map->r_y)
-		{
-			color = create_trgb(0, d->map->c_r, d->map->c_g, d->map->c_b);
-			my_mlx_pixel_put(d, d->ray->column_id + i, j, color);
-			j++;
-		}
-		draw_wall(d, i, j, start);
-		j = j + d->ray->height;
-		while (j < (int)d->map->r_y)
-		{
-			color = create_trgb(0, d->map->f_r, d->map->f_g, d->map->f_b);
-			my_mlx_pixel_put(d, d->ray->column_id + i, j, color);
-			j++;
-		}
-		i++;
+		color = create_trgb(0, d->map->c_r, d->map->c_g, d->map->c_b);
+		my_mlx_pixel_put(d, d->ray->column_id, j, color);
+		j++;
+	}
+	draw_wall(d, 0, j, start);
+	j = j + d->ray->height;
+	while (j < (int)d->map->r_y)
+	{
+		color = create_trgb(0, d->map->f_r, d->map->f_g, d->map->f_b);
+		my_mlx_pixel_put(d, d->ray->column_id, j, color);
+		j++;
 	}
 }

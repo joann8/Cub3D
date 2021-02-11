@@ -1,11 +1,11 @@
-SO images/south.xpm
-WE images/west.xpm
-EA images/east.xpm
-S images/sprite.xpm
+SO images/carresve.xpm
+WE images/carreh.xpm
+EA images/carrese.xpm
+S images/hp4.xpm
 C 0,0,100
 F 46,46,46
-NO images/north.xpm
-R 600 600
+NO images/carreg.xpm
+R 123  543
 
          1111111111111111111111111
          1000000000110000000000001
@@ -21,3 +21,53 @@ R 600 600
 11000001110101011111011110N0111
 11110111 1110101 101111010001
 11111111 1111111 111111111111
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1

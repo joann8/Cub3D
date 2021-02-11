@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:14:08 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/11 14:49:31 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 22:44:39 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,6 @@ int			ft_atoi_cub(const char *str, int *pos)
 	}
 	*pos = *pos + i;
 	return (res);
-}
-
-int			check_block_size(t_map *map)
-{
-	if (map->r_x < BLOCK * (unsigned int)map->map_col
-			|| map->r_y < BLOCK * (unsigned int)map->map_lin)
-		return (print_error_parsing(5));
-	return (1);
 }
 
 int			hit_a_wall(double x, double y, char **map_tab, t_map *map)

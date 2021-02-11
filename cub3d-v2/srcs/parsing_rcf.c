@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:08:47 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 19:06:41 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 22:47:12 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		data_r(char *map_str, t_map *map, int *position)
 	if (skip_space_comma(map_str, &i, 1) == -1)
 		return (print_error_parsing(13));
 	map->r_y = ft_atoi_cub(map_str + i, &i);
-	if (map->r_x > 0 && map->r_y > 0)
+	if (map->r_x > 2 && map->r_y > 2)
 		map->r = 1;
 	else
 		return (print_error_parsing(13));
