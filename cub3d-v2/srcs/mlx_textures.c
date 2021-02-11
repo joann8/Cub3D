@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 15:11:03 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 17:20:22 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 16:09:47 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,7 @@ int		init_texture(t_data *d)
 	if (d->t->text_n == NULL || d->t->text_s == NULL
 			|| d->t->text_w == NULL || d->t->text_e == NULL
 			|| d->t->text_spr == NULL)
-	{
-		print_error_mlx(4);
 		return (-1);
-	}
 	if (create_texture(d) == -1)
 		return (-1);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 18:28:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 18:10:52 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 12:01:37 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	ray_cast_h_coord(t_data *d, t_coord *c)
 {
 	int	tronc;
 
-	tronc = d->player->y / d->map->tile_lin;
-	c->y_intercept = (tronc * d->map->tile_lin);
+	tronc = d->player->y / BLOCK;
+	c->y_intercept = (tronc * BLOCK);
 	if (d->ray->fac_down == 1)
-		c->y_intercept += d->map->tile_lin;
+		c->y_intercept += BLOCK;
 	c->x_intercept = d->player->x
 		+ ((-c->y_intercept + d->player->y) / tan((d->ray->angle)));
-	c->y_step = d->map->tile_lin;
+	c->y_step = BLOCK;
 	if (d->ray->fac_up == 1)
 		c->y_step *= -1;
-	c->x_step = d->map->tile_lin / tan((d->ray->angle));
+	c->x_step = BLOCK / tan((d->ray->angle));
 	if (d->ray->fac_left == 1 && c->x_step > 0)
 		c->x_step *= -1;
 	if (d->ray->fac_right == 1 && c->x_step < 0)
@@ -67,16 +67,16 @@ void	ray_cast_v_coord(t_data *d, t_coord *c)
 {
 	int	tronc;
 
-	tronc = d->player->x / d->map->tile_col;
-	c->x_intercept = (tronc * d->map->tile_col);
+	tronc = d->player->x / BLOCK;
+	c->x_intercept = (tronc * BLOCK);
 	if (d->ray->fac_right == 1)
-		c->x_intercept += d->map->tile_col;
+		c->x_intercept += BLOCK;
 	c->y_intercept = d->player->y
 		+ ((-c->x_intercept + d->player->x) * tan((d->ray->angle)));
-	c->x_step = d->map->tile_col;
+	c->x_step = BLOCK;
 	if (d->ray->fac_left == 1)
 		c->x_step *= -1;
-	c->y_step = d->map->tile_col * tan((d->ray->angle));
+	c->y_step = BLOCK * tan((d->ray->angle));
 	if (d->ray->fac_up == 1 && c->y_step > 0)
 		c->y_step *= -1;
 	if (d->ray->fac_down == 1 && c->y_step < 0)

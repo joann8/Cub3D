@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_casting_sprite.c                               :+:      :+:    :+:   */
+/*   ray_sprite.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 09:10:14 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 19:17:13 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 14:53:21 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int		sprite_ray(t_data *d, double x_h, double y_h)
 	int x;
 	int y;
 
-	x = x_h / d->map->tile_col;
-	y = y_h / d->map->tile_lin;
+	x = x_h / BLOCK;
+	y = y_h / BLOCK;
 	i = 0;
 	while (i < d->map->sprite)
 	{
@@ -67,9 +67,7 @@ void	get_sprite_data(t_data *d, int i)
 	double angle_sprite_to_ortho;
 	double angle_player_to_sprite;
 	double cor_dist;
-	double dist_proj_plan;
 
-	dist_proj_plan = (d->map->r_x / 2) / tan((d->player->fov / 2));
 	d->sprite[i].x_toplayer = d->sprite[i].x_d - d->player->x;
 	d->sprite[i].y_toplayer = d->sprite[i].y_d - d->player->y;
 	angle_sprite_to_ortho = atan2(d->sprite[i].y_toplayer,
@@ -78,9 +76,9 @@ void	get_sprite_data(t_data *d, int i)
 	d->sprite[i].angle = angle_player_to_sprite;
 	d->sprite[i].angle = within_rad(angle_player_to_sprite);
 	cor_dist = (d->sprite[i].dist * cos(d->sprite[i].angle));
-	d->sprite[i].height = ((dist_proj_plan / cor_dist) * d->map->tile_col);
-	d->sprite[i].length = ((dist_proj_plan / cor_dist) * d->map->tile_lin);
-	d->sprite[i].first_x = d->map->r_x / 2 + dist_proj_plan *
+	d->sprite[i].height = ((d->player->dist_plan / cor_dist) * BLOCK);
+	d->sprite[i].length = ((d->player->dist_plan / cor_dist) * BLOCK);
+	d->sprite[i].first_x = d->map->r_x / 2 + d->player->dist_plan *
 		tan(d->sprite[i].angle) - d->sprite[i].length / 2;
 }
 

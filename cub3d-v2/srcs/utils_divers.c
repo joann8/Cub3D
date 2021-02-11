@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 12:14:08 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 18:15:10 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 14:49:31 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,11 @@ int			ft_atoi_cub(const char *str, int *pos)
 	return (res);
 }
 
-int			define_tile_size(t_map *map)
+int			check_block_size(t_map *map)
 {
-	map->tile_col = map->r_x / map->map_col;
-	map->tile_lin = map->r_y / map->map_lin;
-	if (map->tile_col > map->tile_lin)
-		map->tile_min = map->tile_lin;
-	else
-		map->tile_min = map->tile_col;
-	map->tile_col = map->tile_min; // A CHANGER
-	map->tile_lin = map->tile_min; // A CHANGER
+	if (map->r_x < BLOCK * (unsigned int)map->map_col
+			|| map->r_y < BLOCK * (unsigned int)map->map_lin)
+		return (print_error_parsing(5));
 	return (1);
 }
 
@@ -50,11 +45,11 @@ int			hit_a_wall(double x, double y, char **map_tab, t_map *map)
 
 	if (x < 0 || y < 0)
 		return (1);
-	i_lin = y / map->tile_lin;
-	j_col = x / map->tile_col;
+	i_lin = y / BLOCK;
+	j_col = x / BLOCK;
 	if (i_lin < map->map_lin && j_col < map->map_col
 		&& map_tab[i_lin][j_col] == '0')
-		return (0); //peut ton marcher sur un objet?
+		return (0);
 	else if (i_lin < map->map_lin && j_col < map->map_col
 			&& (map_tab[i_lin][j_col] == '1' || map_tab[i_lin][j_col] == 'x'))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 09:10:14 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 11:55:13 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 14:47:58 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ unsigned int	count_sprite(t_data *d)
 		j = 0;
 		while (d->map_tab[i][j] != '\0')
 		{
-			if (hit_a_wall(j * d->map->tile_col, i * d->map->tile_lin,
-					d->map_tab, d->map) == 2)
+			if (hit_a_wall(j * BLOCK, i * BLOCK, d->map_tab, d->map) == 2)
 				count++;
 			j++;
 		}
@@ -45,13 +44,13 @@ void			assign_sprite_table(t_data *d, int i, int j, int k)
 		j = 0;
 		while (d->map_tab[i][j] != '\0')
 		{
-			if (hit_a_wall(j * d->map->tile_col, i * d->map->tile_lin,
+			if (hit_a_wall(j * BLOCK, i * BLOCK,
 				d->map_tab, d->map) == 2)
 			{
 				d->sprite[k].x_i = j;
 				d->sprite[k].y_i = i;
-				d->sprite[k].x_d = j * d->map->tile_col + d->map->tile_col / 2;
-				d->sprite[k].y_d = i * d->map->tile_lin + d->map->tile_lin / 2;
+				d->sprite[k].x_d = j * BLOCK + BLOCK / 2;
+				d->sprite[k].y_d = i * BLOCK + BLOCK / 2;
 				d->sprite[k].visible = 0;
 				d->sprite[k].dist = 0;
 				d->sprite[k].angle = 0;

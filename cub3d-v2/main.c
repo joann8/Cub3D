@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 11:06:33 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 19:00:29 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 15:47:38 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int		prepare_game(t_data *d, char **av, int mod)
 	if (d->map_tab == NULL)
 		return (-1);
 	check_res(d, mod);
-	define_tile_size(d->map);
+	if (check_block_size(d->map) == -1)
+		return (-1);
 	count_sprite(d);
 	if (d->map->sprite >= 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 18:28:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 18:10:21 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 14:52:42 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ray_wall(t_data *d)
 	int				start;
 
 	corrected_dist = d->ray->dist * cos(d->ray->angle - d->player->angle);
-	d->ray->height = (((d->map->tile_col / corrected_dist)
+	d->ray->height = (((BLOCK / corrected_dist)
 		* d->player->dist_plan));
 	start = (d->map->r_y / 2) - ((d->ray->height / 2));
 	if (d->ray->hit_vert == 1)

@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2021/02/10 19:44:05 by jacher           ###   ########.fr        #
+#    Updated: 2021/02/11 15:50:22 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,50 +44,44 @@ srcs/ray_walls.c \
 srcs/bmp.c \
 srcs/bmp_utils.c
 
-
 OBJS = ${SRCS:.c=.o}
-
-INC = -I includes/ -I libft/ -I ${MLX_DIR}
-
 CC = clang
 RM = rm -f
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra 
 
-MLX_DIR = ./minilibx-linux
-MLX = ${MLX_DIR}/libmlx_Linux.a
+MLX = ./minilibx-linux/libmlx.a
+LIBFT = ./libft/libft.a
 
+LIBS_FLAGS = -L ./libft -L ./minilibx-linux/
+LIBS = -lft -lmlx -lXext -lX11 -lm
 
-LIBFT_DIR = ./libft
-LIBFT = ${LIBFT_DIR}/libft.a
+INC = -I libft/ -I minilibx-linux/  -I cub.h  -I struct.h
 
-LIBS = -L ${LIBFT_DIR} -lft -L ${MLX_DIR} -lmlx -lXext -lX11 -lbsd -lm
-
-.c.o: 
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o} ${INC}
+.c.o: ${LIBFT} ${MLX} cub.h struct.h 
+	${CC} ${FLAGS} ${INC} -c $< -o ${<:.c=.o} 
 
 all: ${NAME}
 
-${NAME}: cub.h struct.h ${LIBFT} ${MLX} ${OBJS}  
-	${CC} ${FLAGS} ${INC} ${OBJS} ${LIBS} -o ${NAME}		
+${NAME}: ${LIBFT} ${MLX} ${OBJS} cub.h struct.h  
+	${CC} ${FLAGS} ${LIBS_FLAGS} ${OBJS} -o ${NAME}	${LIBS}	
 
 ${LIBFT}:
-	@echo "Making libft"
-	@${MAKE} bonus -C ${LIBFT_DIR}
-	@echo "libft done!"
+	make bonus -C ./libft/
 
 ${MLX}:
-	@echo "Making mlx"
-	@${MAKE} -C ${MLX_DIR}
-	@echo "mlx done!"
+	make -C ./minilibx-linux/
 
 clean:
-	${MAKE} -C ${LIBFT_DIR} clean
-	${MAKE} -C ${MLX_DIR} clean
+	make clean -C ./libft/
+	make clean -C ./minilibx-linux/
 	${RM} ${OBJS} 
 
 fclean:	clean
+	make fclean -C ./libft/
 	${RM} ${NAME}
 
 re: fclean all
+
+bonus: all
 
 .PHONY:		all clean fclean re 

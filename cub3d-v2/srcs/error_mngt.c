@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 11:42:58 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 18:56:05 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 14:54:39 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	print_error_parsing2(int err_num)
 		printf("Parsing: map is too small.\n");
 	else if (err_num == 17)
 		printf("Parsing: at least 2 walls have a similar texture.\n");
-	else
-		printf("A CLASSER\n");//A ENLEVER
 }
 
 int		print_error_parsing(int err_num)
@@ -43,6 +41,8 @@ int		print_error_parsing(int err_num)
 		printf("The 3rd argument is not valid.\n");
 	else if (err_num == 4)
 		printf("Parsing: wrong inputs for at least one element.\n");
+	else if (err_num == 5)
+		printf("Parsing: resolution is too low for the map inputs.\n");
 	else if (err_num == 7)
 		printf("Parsing: map inputs are incorrect.\n");
 	else if (err_num == 8)

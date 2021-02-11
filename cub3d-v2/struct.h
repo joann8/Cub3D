@@ -6,13 +6,15 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 19:40:18 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 15:51:43 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 
 # define STRUCT_H
+
+# define BLOCK 25
 
 typedef struct		s_map
 {
@@ -43,9 +45,6 @@ typedef struct		s_map
 	int				player_lin;
 	int				map_col;
 	int				map_lin;
-	int				tile_col;
-	int				tile_lin;
-	int				tile_min;
 	int				sprite;
 	unsigned int	spr_col_no;
 }					t_map;

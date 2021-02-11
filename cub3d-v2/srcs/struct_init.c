@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 19:16:25 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 12:06:23 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ void	f_init_mapdata_bis(t_map *map)
 	map->player_lin = -1;
 	map->map_col = -1;
 	map->map_lin = -1;
-	map->tile_lin = -1;
-	map->tile_col = -1;
-	map->tile_min = -1;
 	map->sprite = 0;
 	map->spr_col_no = 0;
 }
@@ -69,15 +66,15 @@ double	f_init_dir_ang(char c)
 
 void	f_init_player(t_player *player, t_map *map)
 {
-	player->x = ((map->player_col * map->tile_col) + (map->tile_col / 2));
-	player->y = ((map->player_lin * map->tile_lin) + (map->tile_lin / 2));
+	player->x = ((map->player_col * BLOCK) + (BLOCK / 2));
+	player->y = ((map->player_lin * BLOCK) + (BLOCK / 2));
 	player->dir_turn = 0;
 	player->dir_walk_bf = 0;
 	player->dir_walk_lr = 0;
 	player->fov = M_PI / 3;
 	player->angle = f_init_dir_ang(map->player_pos);
-	player->speed_walk = 2;
-	player->speed_ang = deg_to_rad(3);
+	player->speed_walk = 0.3;
+	player->speed_ang = deg_to_rad(2);
 	player->dist_plan = (map->r_x / 2) / (tan(player->fov / 2));
 }
 

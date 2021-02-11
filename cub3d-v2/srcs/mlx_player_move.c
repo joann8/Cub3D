@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/09 18:42:19 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 16:14:49 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ int		close_game(t_data *d)
 		mlx_destroy_image(d->mlx->ptr, d->mlx->img->ptr);
 	if (d->mlx->win)
 		mlx_destroy_window(d->mlx->ptr, d->mlx->win);
-	if (d->mlx->ptr)
-	{
-		mlx_destroy_display(d->mlx->ptr);
-		free(d->mlx->ptr);
-	}
 	return (1);
 }
 
@@ -66,8 +61,7 @@ void	f_update_player(t_data *d)
 	y = d->player->y;
 	x = d->player->x;
 	calculate_x_y(d, &x, &y);
-	if (hit_a_wall(x, y, d->map_tab, d->map) == 0
-		|| hit_a_wall(x, y, d->map_tab, d->map) == 2)// on accepte les objets
+	if (hit_a_wall(x, y, d->map_tab, d->map) == 0)
 	{
 		d->player->x = x;
 		d->player->y = y;

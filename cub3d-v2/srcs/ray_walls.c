@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 22:29:11 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/10 18:11:56 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 12:01:00 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@ int		calculate_x_wall(t_data *d)
 
 	if (d->ray->hit_vert == -1)
 	{
-		tronc = (d->ray->x_hit) / d->map->tile_col;
-		if (d->ray->angle > 0 && d->ray->angle < M_PI)
-			x_color = ((d->ray->x_hit) - (d->map->tile_col) * tronc) *
-				(d->t->length / d->map->tile_col);
+		tronc = (d->ray->x_hit) / BLOCK;
+		if (d->ray->angle >= 0 && d->ray->angle <= M_PI)
+			x_color = ((d->ray->x_hit) - (BLOCK * tronc)) *
+				(d->t->length / BLOCK);
 		else
-			x_color = (-(d->ray->x_hit) + (d->map->tile_col) * (tronc + 1))
-				* (d->t->length / d->map->tile_col);
+			x_color = (-(d->ray->x_hit) + (BLOCK * (tronc + 1)))
+				* (d->t->length / BLOCK);
 	}
 	if (d->ray->hit_vert == 1)
 	{
-		tronc = (d->ray->y_hit) / d->map->tile_lin;
+		tronc = (d->ray->y_hit) / BLOCK;
 		if (d->ray->angle < M_PI / 2 || d->ray->angle > (3 * M_PI) / 2)
-			x_color = ((d->ray->y_hit) - (d->map->tile_lin * tronc)) *
-				(d->t->length / d->map->tile_lin);
+			x_color = ((d->ray->y_hit) - (BLOCK * tronc)) *
+				(d->t->length / BLOCK);
 		else
-			x_color = (-(d->ray->y_hit) + (d->map->tile_lin * (tronc + 1))) *
-				(d->t->length / d->map->tile_lin);
+			x_color = (-(d->ray->y_hit) + (BLOCK * (tronc + 1))) *
+				(d->t->length / BLOCK);
 	}
 	return (x_color);
 }

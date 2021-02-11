@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:51:10 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/08 12:27:31 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/11 16:11:01 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,21 @@ void	f_free_mapdata(t_map *map)
 
 void	free_textures(t_data *d)
 {
-	if (d->t->text_n->ptr)
-		mlx_destroy_image(d->mlx->ptr, d->t->text_n->ptr);
-	if (d->t->text_s->ptr)
-		mlx_destroy_image(d->mlx->ptr, d->t->text_s->ptr);
-	if (d->t->text_e->ptr)
-		mlx_destroy_image(d->mlx->ptr, d->t->text_e->ptr);
-	if (d->t->text_w->ptr)
-		mlx_destroy_image(d->mlx->ptr, d->t->text_w->ptr);
-	if (d->t->text_spr->ptr)
-		mlx_destroy_image(d->mlx->ptr, d->t->text_spr->ptr);
+	if (d->t->text_n)
+		if (d->t->text_n->ptr)
+			mlx_destroy_image(d->mlx->ptr, d->t->text_n->ptr);
+	if (d->t->text_s)
+		if (d->t->text_s->ptr)
+			mlx_destroy_image(d->mlx->ptr, d->t->text_s->ptr);
+	if (d->t->text_e)
+		if (d->t->text_e->ptr)
+			mlx_destroy_image(d->mlx->ptr, d->t->text_e->ptr);
+	if (d->t->text_w)
+		if (d->t->text_w->ptr)
+			mlx_destroy_image(d->mlx->ptr, d->t->text_w->ptr);
+	if (d->t->text)
+		if (d->t->text_spr->ptr)
+			mlx_destroy_image(d->mlx->ptr, d->t->text_spr->ptr);
 }
 
 void	free_textures_ptr(t_data *d)
@@ -64,7 +69,7 @@ void	ft_free_map(char **map_tab, int j)
 		free(map_tab[i]);
 		i++;
 	}
-	free(map_tab);// pas sure
+	free(map_tab);
 }
 
 void	free_data(t_data *d)
@@ -84,4 +89,9 @@ void	free_data(t_data *d)
 		free(d->ray);
 	if (d->t)
 		free(d->t);
+	if (d->mlx->ptr)
+	{
+		mlx_destroy_display(d->mlx->ptr);
+		free(d->mlx->ptr);
+	}
 }
