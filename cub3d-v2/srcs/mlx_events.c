@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 19:26:05 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/09 19:27:11 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/12 11:06:17 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		player_move(t_data *d)
 {
 	f_update_player(d);
 	cast_all_rays(d);
+	mini_map_update(d);
 	mlx_put_image_to_window(d->mlx->ptr, d->mlx->win, d->mlx->img->ptr, 0, 0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/11 22:45:02 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/12 11:07:50 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
+
+int				mini_map_update(t_data *d);
 
 int				check_arg1(char *av);
 int				check_arg(int ac, char **av);

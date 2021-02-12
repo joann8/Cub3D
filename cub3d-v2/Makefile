@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2021/02/11 15:50:22 by jacher           ###   ########.fr        #
+#    Updated: 2021/02/12 11:08:20 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ srcs/ray_casting_hv.c \
 srcs/ray_sprite.c \
 srcs/ray_walls.c \
 srcs/bmp.c \
-srcs/bmp_utils.c
+srcs/bmp_utils.c \
+mlx_othernotused.c
 
 OBJS = ${SRCS:.c=.o}
 CC = clang

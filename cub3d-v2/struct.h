@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/05 10:29:46 by jacher            #+#    #+#             */
-/*   Updated: 2021/02/11 22:39:56 by jacher           ###   ########.fr       */
+/*   Updated: 2021/02/12 14:40:36 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define STRUCT_H
 
-# define BLOCK 10
+# define BLOCK 15
 
 typedef struct		s_map
 {
