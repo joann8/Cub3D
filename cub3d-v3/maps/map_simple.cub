@@ -1,0 +1,18 @@
+R  500 500
+F 220,100,0    
+C 69,69,69
+
+NO images/north2.xpm
+SO images/south2.xpm
+EA images/east2.xpm
+WE images/west2.xpm
+S images/soldier.xpm
+
+11111111111
+10000000001
+10000000001
+10000000001
+100020000W1
+10000000001
+10000000001
+11111111111
